@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Pembuatan Website & Landing Page Murah - OemahDesainWeb</title>
+    <meta name="description" content="Jasa pembuatan website dan landing page profesional, murah, dan cepat jadi. Cocok untuk UMKM dan advertiser.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- RESET CSS --- */
+        :root {
+            --primary: #2563eb; /* Biru Profesional */
+            --secondary: #1e40af;
+            --accent: #f59e0b; /* Kuning/Oranye CTA */
+            --text: #333333;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { color: var(--text); line-height: 1.6; background-color: var(--bg-light); }
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* --- UTILITY CLASSES --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .btn-cta { background-color: var(--accent); color: white; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); }
+        .btn-cta:hover { transform: translateY(-3px); background-color: #d97706; }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+        .btn-outline:hover { background: var(--primary); color: white; }
+        .section { padding: 60px 0; }
+
+        /* --- HEADER --- */
+        header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; padding: 15px 0; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--primary); }
+        .logo span { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero { background: linear-gradient(135deg, var(--white) 50%, #eff6ff 50%); padding: 80px 0; }
+        .hero-content { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px; color: #111; }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; color: #555; }
+        .hero-features { display: flex; gap: 15px; margin-bottom: 30px; font-size: 0.9rem; }
+        .hero-features i { color: var(--primary); margin-right: 5px; }
+        .hero-img { flex: 1; min-width: 300px; text-align: center; }
+        .hero-img img { max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        /* --- PAIN POINTS --- */
+        .pain { background: var(--white); }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .pain-card { padding: 20px; border: 1px solid #eee; border-radius: 10px; text-align: center; }
+        .pain-card i { font-size: 40px; color: #ef4444; margin-bottom: 15px; }
+        
+        /* --- BENEFITS --- */
+        .benefits { background-color: var(--secondary); color: white; }
+        .benefits h2 { margin-bottom: 40px; }
+        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .benefit-item { text-align: center; }
+        .benefit-item i { font-size: 3rem; margin-bottom: 15px; color: var(--accent); }
+
+        /* --- PRICING (PENTING) --- */
+        .pricing { background: #f8fafc; }
+        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 50px; }
+        .price-card { background: var(--white); border-radius: 15px; padding: 30px; width: 300px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; position: relative; }
+        .price-card.popular { border: 2px solid var(--primary); transform: scale(1.05); z-index: 2; }
+        .badge-popular { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .price-header h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .price-header .price { font-size: 2rem; font-weight: bold; color: var(--primary); }
+        .price-header .old-price { text-decoration: line-through; color: #999; font-size: 1rem; }
+        .price-features { margin: 20px 0; text-align: left; }
+        .price-features li { margin-bottom: 10px; font-size: 0.9rem; }
+        .price-features i { color: #10b981; margin-right: 8px; }
+
+        /* --- PORTFOLIO --- */
+        .portfolio { background: var(--white); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+        .portfolio-item img { width: 100%; border-radius: 10px; transition: 0.3s; }
+        .portfolio-item img:hover { transform: scale(1.02); }
+
+        /* --- FAQ --- */
+        .faq { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .faq-item { background: var(--white); margin-bottom: 15px; padding: 15px 20px; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .faq-question { font-weight: bold; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 10px; color: #666; font-size: 0.95rem; }
+        .faq-item.active .faq-answer { display: block; }
+
+        /* --- FOOTER --- */
+        footer { background: #1f2937; color: #9ca3af; padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        
+        /* --- FLOATING WA --- */
+        .floating-wa { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 9999; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: 0.3s; }
+        .floating-wa:hover { transform: scale(1.05); background: #20bd5a; }
+        .floating-wa i { font-size: 24px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 1.8rem; }
+            .hero-content { flex-direction: column-reverse; }
+            .pricing-grid { flex-direction: column; align-items: center; }
+            .price-card.popular { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">Oemah<span>DesainWeb</span></div>
+            <a href="#harga" class="btn btn-cta">Pesan Sekarang</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Buat Landing Page Murah, Cepat & Siap Iklan</h1>
+                <p>Tingkatkan penjualan bisnis Anda dengan website profesional. Pengerjaan kilat 1-2 hari jadi. Mobile friendly dan SEO Basic.</p>
+                <div class="hero-features">
+                    <span><i class="fas fa-check-circle"></i> Terima Beres</span>
+                    <span><i class="fas fa-check-circle"></i> Revisi Mudah</span>
+                    <span><i class="fas fa-check-circle"></i> Free Domain</span>
+                </div>
+                <a href="https://wa.me/6281234567890?text=Halo%20OemahDesainWeb,%20saya%20mau%20konsultasi%20website" class="btn btn-cta">Konsultasi Gratis <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-img">
+                <img src="https://placehold.co/500x350/2563eb/white?text=Gambar+Preview+Website" alt="Jasa Pembuatan Website">
+            </div>
+        </div>
+    </section>
+
+    <section class="section pain">
+        <div class="container text-center">
+            <h2>Apakah Anda Mengalami Ini?</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Iklan Boncos</h3>
+                    <p>Sudah keluar uang banyak untuk iklan tapi yang beli sedikit karena web lemot.</p>
+                </div>
+                <div class="pain-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Gaptek Teknis</h3>
+                    <p>Bingung cara beli domain, hosting, dan coding yang rumit.</p>
+                </div>
+                <div class="pain-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Budget Terbatas</h3>
+                    <p>Jasa agency mahal, tapi kalau bikin sendiri hasilnya berantakan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section benefits">
+        <div class="container text-center">
+            <h2>Kenapa Memilih OemahDesainWeb?</h2>
+            <div class="benefit-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Loading Cepat</h3>
+                    <p>Struktur ringan disukai Google & Pengunjung.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Tampil sempurna di HP, Tablet, dan Laptop.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support Ramah</h3>
+                    <p>Konsultasi gratis via WhatsApp kapan saja.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>Gratis SSL</h3>
+                    <p>Website aman dengan gembok hijau (HTTPS).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="harga" class="section pricing">
+        <div class="container text-center">
+            <h2>Pilih Paket Sesuai Kebutuhan</h2>
+            <p>Harga transparan, tanpa biaya tersembunyi.</p>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Landing Page</h3>
+                        <p class="old-price">Rp 900.000</p>
+                        <p class="price">Rp 499rb</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> 1 Halaman Panjang (LP)</li>
+                        <li><i class="fas fa-check"></i> Gratis Domain (.my.id/.biz)</li>
+                        <li><i class="fas fa-check"></i> Design Responsif</li>
+                        <li><i class="fas fa-check"></i> Tombol WhatsApp</li>
+                        <li><i class="fas fa-check"></i> Pengerjaan 2 Hari</li>
+                    </ul>
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20paket%20Landing%20Page%20499rb" class="btn btn-outline">Pilih Paket</a>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="badge-popular">BEST SELLER</div>
+                    <div class="price-header">
+                        <h3>Website Bisnis</h3>
+                        <p class="old-price">Rp 1.500.000</p>
+                        <p class="price">Rp 899rb</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> <strong>5 Halaman Website</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>Gratis Domain .COM</strong></li>
+                        <li><i class="fas fa-check"></i> Hosting Premium 1 Thn</li>
+                        <li><i class="fas fa-check"></i> Email Bisnis Profesional</li>
+                        <li><i class="fas fa-check"></i> SEO Basic Google</li>
+                        <li><i class="fas fa-check"></i> Revisi 3x</li>
+                    </ul>
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20paket%20Website%20Bisnis%20899rb" class="btn btn-cta">Pilih Paket</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Toko Online</h3>
+                        <p class="old-price">Rp 3.000.000</p>
+                        <p class="price">Rp 1.9jt</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Fitur Keranjang Belanja</li>
+                        <li><i class="fas fa-check"></i> Upload Produk Unlimited</li>
+                        <li><i class="fas fa-check"></i> Hitung Ongkir Otomatis</li>
+                        <li><i class="fas fa-check"></i> Laporan Penjualan</li>
+                        <li><i class="fas fa-check"></i> Training Admin</li>
+                    </ul>
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20paket%20Toko%20Online" class="btn btn-outline">Pilih Paket</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section portfolio text-center">
+        <div class="container">
+            <h2>Contoh Desain Website</h2>
+            <p>Bersih, Elegan, dan Menjual.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x300/e2e8f0/555?text=Contoh+Web+Travel" alt="Web Travel">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x300/e2e8f0/555?text=Contoh+Web+Bengkel" alt="Web Bengkel">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x300/e2e8f0/555?text=Contoh+Web+Produk" alt="Web Produk">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2 class="text-center">Pertanyaan Sering Diajukan</h2>
+        <div class="faq-item">
+            <div class="faq-question">Berapa lama proses pembuatannya? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Untuk Landing Page sekitar 1-2 hari kerja setelah data kami terima. Untuk Website Bisnis sekitar 3-5 hari.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Apa yang perlu saya siapkan? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Cukup siapkan materi teks (profil, layanan) dan foto produk/kegiatan usaha Anda. Sisanya kami yang atur.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Apakah ada biaya perpanjangan? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Ya, untuk perpanjangan Domain dan Hosting di tahun berikutnya. Biayanya terjangkau, mulai 350rb/tahun.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OemahDesainWeb. Jasa Pembuatan Website Terpercaya.</p>
+            <p>Melayani seluruh Indonesia: Jakarta, Surabaya, Bandung, Medan, dll.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20bikin%20website" class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Konsultasi Gratis</span>
+    </a>
+
+    <script>
+        const faqs = document.querySelectorAll('.faq-item');
+        faqs.forEach(faq => {
+            faq.addEventListener('click', () => {
+                faq.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
