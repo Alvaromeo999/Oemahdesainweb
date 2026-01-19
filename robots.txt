@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alvaromeo999.github.io/Oemahdesainweb/sitemap.xml
+Sitemap: https://oemahdesainweb.my.id/sitemap.xml
+
