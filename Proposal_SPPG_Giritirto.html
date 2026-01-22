@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Website SPPG Giritirto - OemahDesainWeb</title>
+    <style>
+        /* SETTING KERTAS A4 */
+        @page { size: A4; margin: 2.5cm; }
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            line-height: 1.5; 
+            color: #000;
+            background: #ccc; /* Background abu-abu biar kelihatan kertasnya */
+            padding: 20px;
+        }
+        .page {
+            background: white;
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 2cm;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* HEADER SURAT */
+        .header { text-align: center; border-bottom: 3px double #000; padding-bottom: 15px; margin-bottom: 30px; }
+        .header h1 { margin: 0; font-size: 16pt; text-transform: uppercase; letter-spacing: 1px; }
+        .header h2 { margin: 5px 0; font-size: 12pt; font-weight: normal; }
+        .header p { margin: 0; font-size: 10pt; font-style: italic; }
+        
+        /* ISI */
+        .content h3 { font-size: 12pt; text-transform: uppercase; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 25px; }
+        .content p { text-align: justify; margin-bottom: 10px; font-size: 12pt; }
+        .content ul { padding-left: 20px; }
+        .content li { margin-bottom: 5px; font-size: 12pt; }
+        
+        /* TABEL HARGA/FITUR */
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        table th, table td { border: 1px solid #000; padding: 8px; text-align: left; font-size: 11pt; }
+        table th { background-color: #f0f0f0; text-align: center; }
+
+        /* TTD */
+        .signature { margin-top: 50px; float: right; text-align: center; width: 200px; }
+        .signature .name { font-weight: bold; text-decoration: underline; margin-top: 70px; }
+
+        /* TOMBOL PRINT (HILANG SAAT DIPRINT) */
+        .no-print { text-align: center; margin-bottom: 20px; }
+        .btn-print { background: #2563eb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-family: sans-serif; font-weight: bold; cursor: pointer; border: none; }
+        .btn-print:hover { background: #1d4ed8; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .page { width: 100%; margin: 0; padding: 0; box-shadow: none; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button onclick="window.print()" class="btn-print">🖨️ Klik Disini untuk Simpan PDF</button>
+        <p style="font-family: sans-serif; font-size: 12px; margin-top: 5px; color: #555;">(Saat jendela print muncul, pilih Destination: <b>Save as PDF</b>)</p>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
+                <img src="assets/img/sppg.png" alt="Logo" style="height: 60px;"> </div>
+            <h1>OemahDesainWeb</h1>
+            <h2>Jasa Pembuatan Website Profesional & Sistem Informasi</h2>
+            <p>Jl. Giritirto No. XX, Wonogiri | WA: 0812-1515-633 | Web: oemahdesainweb.my.id</p>
+        </div>
+
+        <div class="content">
+            <div style="display: flex; justify-content: space-between;">
+                <div>Nomor: 001/ODW/I/2026</div>
+                <div>Surakarta, 22 Januari 2026</div>
+            </div>
+            <br>
+            <div>
+                Kepada Yth,<br>
+                <strong>Bapak Lurah / Kepala SPPG Giritirto</strong><br>
+                di Tempat
+            </div>
+
+            <p style="margin-top: 20px;"><strong>Perihal: Penawaran Sistem Informasi SPPG MBG Terpadu</strong></p>
+
+            <p>Dengan hormat,</p>
+            <p>Sehubungan dengan pelaksanaan Program Makan Bergizi Gratis (MBG) Nasional, transparansi dan pengelolaan data menjadi kunci kepercayaan publik. Kami dari <strong>OemahDesainWeb</strong> mengajukan penawaran pembuatan Website Resmi SPPG Giritirto.</p>
+
+            <h3>I. Latar Belakang & Solusi</h3>
+            <p>Kami memahami tantangan SPPG dalam menyajikan data menu, gizi, dan distribusi secara transparan kepada wali murid. Solusi kami, <strong>"Giritirto Gizi Hub"</strong>, bukan sekadar website profil, melainkan sistem yang mengintegrasikan:</p>
+            <ul>
+                <li><strong>Transparansi Menu:</strong> Orang tua bisa melihat jadwal menu & nilai gizi harian.</li>
+                <li><strong>Ekonomi Warga:</strong> Fitur "Mitra Tani" agar petani lokal bisa menyuplai bahan baku.</li>
+                <li><strong>Digitalisasi Laporan:</strong> Bukti foto kegiatan & distribusi yang dapat diakses publik.</li>
+            </ul>
+
+            <h3>II. Rincian Fitur & Layanan</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">No</th>
+                        <th>Modul / Fitur</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">1</td>
+                        <td><strong>Website Profil Resmi</strong></td>
+                        <td>Halaman Beranda, Profil Organisasi, Visi Misi, Legalitas, Galeri Foto Kegiatan.</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">2</td>
+                        <td><strong>Sistem E-Menu & Gizi</strong></td>
+                        <td>Kalender menu interaktif dengan detail kalori/protein per porsi.</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">3</td>
+                        <td><strong>Portal Mitra Tani</strong></td>
+                        <td>Fitur pendaftaran suplier warga lokal & info kebutuhan bahan baku harian.</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">4</td>
+                        <td><strong>Integrasi Aduan</strong></td>
+                        <td>Tombol WhatsApp langsung ke Admin & Form Pengaduan Masyarakat.</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">5</td>
+                        <td><strong>Bonus Layanan</strong></td>
+                        <td>Gratis Domain (.my.id), Hosting 1 Tahun, & Pelatihan Admin.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>III. Penutup</h3>
+            <p>Besar harapan kami agar Kelurahan Giritirto dapat menjadi percontohan desa digital dalam pengelolaan program MBG di Kabupaten Wonogiri. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.</p>
+
+            <div class="signature">
+                <p>Hormat Kami,</p>
+                <br><br>
+                <div class="name">Alvaromeo</div>
+                <div>OemahDesainWeb</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
