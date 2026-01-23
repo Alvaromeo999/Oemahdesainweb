@@ -32,4 +32,18 @@ localStorage.setItem('visitorCount', count);
 document.getElementById('reviewText').placeholder =
   "Terima kasih! Ulasan Anda berhasil dikirim 😊";
 
+const { error } = await supabase
+  .from('reviews')
+  .insert([{
+    name: name,
+    rating: rating,
+    comment: comment
+  }])
+
+if (error) {
+  console.error('Insert error:', error.message)
+  alert(error.message)
+}
+
+
                         
