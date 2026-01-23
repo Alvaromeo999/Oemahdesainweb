@@ -1,44 +1,45 @@
-// ===============================
+// ==========================================
 // 1. SETUP SUPABASE
-// ===============================
+// ==========================================
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' // <--- JANGAN LUPA ISI KEY LAGI
+
+// ⚠️ PASTE API KEY "ANON PUBLIC" DI SINI
+const supabaseKey = 'PASTE_KODE_ANON_PUBLIC_DISINI' 
 
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
-const ADMIN_SECRET = "OemahDesain2026";
+const ADMIN_SECRET = "12345"; 
 
-// ===============================
-// 2. LOGIKA UTAMA
-// ===============================
+// ==========================================
+// 2. LOGIKA UTAMA WEBSITE
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- FITUR RAHASIA: PELACAK PENGUNJUNG ---
-    trackVisitor(); 
+    // --- A. JALANKAN PELACAK & LOAD DATA ---
+    trackVisitor();
+    countVisitors();
+    loadReviews();
 
-    // --- SETUP BINTANG ---
+    // --- B. LOGIKA RATING BINTANG ---
     let selectedRating = 0;
     const stars = document.querySelectorAll('.stars span');
     stars.forEach((star, index) => {
         star.addEventListener('click', () => {
             selectedRating = index + 1;
             stars.forEach(s => s.classList.remove('active'));
-            for (let i = 0; i < selectedRating; i++) stars[i].classList.add('active');
+            for(let i=0; i<selectedRating; i++) stars[i].classList.add('active');
         });
     });
 
-    // --- SETUP TOMBOL KIRIM ---
+    // --- C. LOGIKA TOMBOL KIRIM ULASAN ---
     const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn) {
+    if(submitBtn) {
         submitBtn.addEventListener('click', async () => {
-            const textElement = document.getElementById('reviewText');
-            const botField = document.getElementById('botField');
-            const text = textElement ? textElement.value.trim() : '';
+            const text = document.getElementById('reviewText').value.trim();
+            const bot = document.getElementById('botField').value; 
 
-            // Anti Spam
-            if (botField && botField.value !== '') return; 
-
-            if (!text || selectedRating === 0) {
-                alert('Isi bintang dan ulasan dulu ya!');
+            if(bot !== '') return; // Anti Spam
+            if(!text || selectedRating === 0) {
+                alert("Mohon isi bintang & ulasan dulu ya 🙏");
                 return;
             }
 
@@ -53,100 +54,98 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = "Kirim Ulasan";
             submitBtn.disabled = false;
 
-            if (error) {
-                alert('Gagal: ' + error.message);
+            if(error) {
+                alert("Gagal kirim: " + error.message);
             } else {
-                alert('Terima kasih!');
+                alert("Terima kasih! Ulasan berhasil dikirim.");
                 document.getElementById('reviewText').value = '';
                 selectedRating = 0;
                 stars.forEach(s => s.classList.remove('active'));
-                loadReviews();
+                loadReviews(); 
             }
         });
     }
 
-    loadReviews();
+    // --- D. LOGIKA FAQ (TANYA JAWAB) ---
+    const faqs = document.querySelectorAll('.faq-item');
+    faqs.forEach(faq => {
+        faq.addEventListener('click', () => {
+            faq.classList.toggle('active');
+        });
+    });
 });
 
-// ===============================
-// 3. FUNGSI PELACAK (MATA-MATA) 🕵️‍♂️
-// ===============================
-async function trackVisitor() {
-    // Cek apakah pengunjung ini sudah direkam hari ini? (Agar database tidak penuh)
-    const lastVisit = localStorage.getItem('tracked_date');
-    const today = new Date().toDateString();
+// ==========================================
+// 3. FUNGSI-FUNGSI PENDUKUNG
+// ==========================================
 
-    if (lastVisit === today) return; // Jika sudah direkam hari ini, stop.
-
-    try {
-        // 1. Curi IP Address pake layanan gratis ipify
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        const userIP = data.ip;
-        const deviceInfo = navigator.userAgent; // Info Browser/HP
-
-        // 2. Kirim ke Supabase tabel 'visitors' diam-diam
-        await sb.from('visitors').insert([{
-            ip_address: userIP,
-            device_info: deviceInfo
-        }]);
-
-        // Tandai sudah direkam
-        localStorage.setItem('tracked_date', today);
-        console.log("Visitor tracked via IP."); 
-
-    } catch (err) {
-        console.log("Silent tracking error:", err); // Error diam, user tidak tahu
+// --- FUNGSI TOGGLE KATALOG ---
+function toggleCatalog() {
+    var hiddenDiv = document.getElementById("catalog-hidden");
+    var btn = document.getElementById("toggleBtn");
+    
+    if (hiddenDiv.style.display === "none" || hiddenDiv.style.display === "") {
+        hiddenDiv.style.display = "block";
+        btn.innerHTML = '<i class="fas fa-chevron-up"></i> Tutup Katalog';
+    } else {
+        hiddenDiv.style.display = "none";
+        btn.innerHTML = '<i class="fas fa-chevron-down"></i> Lihat Semua Pilihan Desain';
+        btn.scrollIntoView({behavior: "smooth", block: "center"});
     }
 }
 
-// ===============================
-// 4. FUNGSI LOAD ULASAN & ADMIN
-// ===============================
+// --- FUNGSI LOAD ULASAN ---
 async function loadReviews() {
     const list = document.getElementById('reviewList');
-    const avgDisplay = document.getElementById('averageDisplay');
-    if (!list) return;
+    const avg = document.getElementById('averageDisplay');
+    
+    const { data, error } = await sb.from('reviews').select('*').order('created_at', { ascending: false });
 
-    const { data, error } = await sb
-        .from('reviews')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-    if (!error && data) {
-        // Hitung Rata-rata
+    if(data && list) {
         let total = 0;
         data.forEach(r => total += r.rating);
-        let avg = data.length > 0 ? (total / data.length).toFixed(1) : 0;
-        
-        if(avgDisplay) avgDisplay.innerHTML = `⭐ ${avg} / 5.0 (${data.length} ulasan)`;
+        let average = data.length > 0 ? (total / data.length).toFixed(1) : 0;
+        if(avg) avg.innerText = `⭐ ${average} / 5.0`;
 
-        // Render List
         list.innerHTML = '';
         data.forEach(r => {
-            let stars = '';
-            for(let i=0; i<5; i++) stars += i < r.rating ? '★' : '☆';
-            
-            // Tombol Hapus (Sampah)
-            const delBtn = `<span onclick="hapusReview(${r.id})" style="cursor:pointer; float:right; opacity:0.2;">🗑️</span>`;
-
+            let stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
             list.innerHTML += `
-                <div style="border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px;">
-                    ${delBtn}
-                    <div style="color:gold;">${stars}</div>
+                <div style="border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px;">
+                    <span onclick="hapusReview(${r.id})" style="float:right; cursor:pointer; opacity:0.3;">🗑️</span>
+                    <div style="color:#f39c12; font-size:1.2rem;">${stars}</div>
                     <p>"${r.review}"</p>
-                    <small style="color:#ccc;">${new Date(r.created_at).toLocaleDateString()}</small>
-                </div>`;
+                    <small style="color:#ccc">${new Date(r.created_at).toLocaleDateString()}</small>
+                </div>
+            `;
         });
     }
 }
 
+// --- FUNGSI MATA-MATA ---
+async function trackVisitor() {
+    try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const json = await res.json();
+        await sb.from('visitors').insert([{ ip_address: json.ip, device_info: navigator.userAgent }]);
+    } catch(e) { console.log("Tracking error"); }
+}
+
+async function countVisitors() {
+    const el = document.getElementById('visitorCount');
+    if(el) {
+        const { count } = await sb.from('visitors').select('*', { count: 'exact', head: true });
+        if(count) el.innerText = count + " Orang";
+    }
+}
+
+// --- FUNGSI ADMIN ---
 window.hapusReview = async function(id) {
-    const pwd = prompt("Password Admin:");
-    if (pwd === ADMIN_SECRET) {
-        if(confirm("Hapus?")) {
+    const pwd = prompt("Oemahdesainweb2026:");
+    if(pwd === ADMIN_SECRET) {
+        if(confirm("Yakin hapus?")) {
             await sb.from('reviews').delete().eq('id', id);
             loadReviews();
         }
-    }
+    } else if(pwd) { alert("Password Salah!"); }
 }
