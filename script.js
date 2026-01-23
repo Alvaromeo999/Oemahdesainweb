@@ -8,7 +8,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
 
 // Password Admin Sederhana (Ganti sesukamu)
-const ADMIN_SECRET = "090524"; 
+const ADMIN_SECRET = "OemahDesain2026";
 
 // ===============================
 // 2. LOGIKA UTAMA
