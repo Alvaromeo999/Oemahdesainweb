@@ -3,7 +3,7 @@
 // ===============================
 // Masukkan URL dan Key Anon kamu langsung di sini (String)
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' // <-- GANTI DENGAN KEY PANJANG DARI DASHBOARD
+const supabaseKey = 'sb_publishable_gTmur1J62LkEE4nG8EE_pg_2YFwV7nf...' // <-- GANTI DENGAN KEY PANJANG DARI DASHBOARD
 
 // Pastikan library supabase sudah dimuat di HTML (cek langkah 2 di bawah)
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
