@@ -15,20 +15,8 @@
     <title>Jasa Pembuatan Website Murah & Landing Page 499rb - OemahDesainWeb</title>
     <meta name="description" content="Jasa pembuatan website profesional dan landing page murah mulai Rp 499rb. Terima beres, desain premium, gratis domain & hosting. Pengerjaan 2 hari.">
     <meta name="keywords" content="jasa pembuatan website murah, jasa landing page, bikin web umkm, jasa website terpercaya, oemahdesainweb, buat toko online">
-    <meta name="author" content="OemahDesainWeb">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="ID-JT">
-    <meta name="geo.placename" content="Surakarta">
     
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://oemahdesainweb.my.id/">
-    <meta property="og:title" content="🔥 Promo Bikin Website Cuma 499rb - Terima Beres!">
-    <meta property="og:description" content="Jangan biarkan kompetitor ambil pelangganmu! Bikin website profesional sekarang. Klik untuk lihat contoh.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-    <meta property="og:locale" content="id_ID">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -37,50 +25,57 @@
         :root { --primary: #2563eb; --secondary: #1e40af; --accent: #f59e0b; --text: #333333; --bg-light: #f8fafc; --white: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
-        /* Agar konten tidak ketutup Header Sticky, beri padding-top di body */
         body { 
             color: var(--text); 
             line-height: 1.6; 
             background-color: var(--bg-light); 
             scroll-behavior: smooth; 
             overflow-x: hidden; 
-            padding-top: 80px; /* PENTING: Jarak untuk Header */
+            padding-top: 80px; /* Default Desktop Padding */
         }
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
         img { max-width: 100%; display: block; }
 
-        /* === HEADER STICKY (KOP SURAT) === */
+        /* === HEADER STICKY (RESPONSIF DIPERBAIKI) === */
         .header-sticky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
             background-color: var(--white);
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between; /* Logo Kiri, Tombol Kanan */
-            align-items: center;
-            padding: 0 5%;
-            z-index: 9999;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 9999; transition: 0.3s;
         }
 
-        /* Tombol Khusus di Header */
-        .btn-header {
-            background-color: var(--accent);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+        /* Wrapper Logo agar tulisan tidak berantakan */
+        .logo-wrapper {
+            display: flex; align-items: center;
+            font-family: sans-serif; font-weight: bold; font-size: 22px;
+            white-space: nowrap; /* Mencegah tulisan turun baris */
         }
-        .btn-header:hover {
-            background-color: #d97706;
-            transform: translateY(-2px);
+        .logo-wrapper img { height: 40px; margin-right: 10px; }
+
+        /* Tombol Header */
+        .btn-header {
+            background-color: var(--accent); color: white;
+            padding: 10px 25px; border-radius: 50px;
+            font-weight: bold; font-size: 0.9rem;
+            transition: 0.3s; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            white-space: nowrap;
+        }
+        .btn-header:hover { background-color: #d97706; transform: translateY(-2px); }
+
+        /* === RESPONSIVE KHUSUS HP (AGAR TIDAK POTONGAN) === */
+        @media (max-width: 600px) {
+            .header-sticky { height: 60px; padding: 0 15px; }
+            body { padding-top: 60px; } /* Sesuaikan jarak body */
+            
+            /* Logo Mengecil Otomatis */
+            .logo-wrapper { font-size: 16px; } 
+            .logo-wrapper img { height: 28px; margin-right: 5px; }
+
+            /* Tombol Mengecil Otomatis */
+            .btn-header { padding: 8px 15px; font-size: 0.75rem; }
         }
 
         /* === UTILITY === */
@@ -98,7 +93,6 @@
         .hero-content { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
         .hero-text { flex: 1; min-width: 100%; } 
         .hero-text h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 15px; color: #1e293b; }
-        .hero-text p { font-size: 1rem; margin-bottom: 25px; color: #64748b; }
         .hero-features span { display: inline-block; margin-right: 15px; margin-bottom: 10px; font-size: 0.9rem; font-weight: 500; }
         .hero-features i { color: #10b981; margin-right: 5px; }
         .hero-img { flex: 1; min-width: 100%; }
@@ -153,7 +147,6 @@
         #seo-content h2 { font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; }
         #seo-content p { font-size: 0.9rem; margin-bottom: 10px; color: #475569; }
         #seo-content ul { padding-left: 20px; font-size: 0.9rem; color: #475569; }
-        #seo-content li { margin-bottom: 5px; list-style-type: disc; }
 
         /* === FAQ === */
         .faq { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
@@ -162,28 +155,19 @@
         .faq-answer { display: none; margin-top: 10px; color: #666; font-size: 0.9rem; }
         .faq-item.active .faq-answer { display: block; }
 
-        /* === ULASAN / REVIEW === */
+        /* === REVIEW SECTION (FIXED) === */
         .review-section { padding: 40px 20px; background: white; max-width: 600px; margin: 0 auto; text-align: left; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .review-box textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin: 10px 0; font-family: inherit; }
         
         .stars span { font-size: 35px; cursor: pointer; color: #ccc; transition: color 0.2s; }
         .stars span.active { color: #f39c12; }
-        .stars span:hover { color: orange; }
-
+        
         #submitBtn {
-            background-color: var(--accent); 
-            color: white; 
-            padding: 12px 30px; 
-            border: none; 
-            border-radius: 50px;
-            cursor: pointer; 
-            font-weight: bold;
-            font-size: 1rem;
-            width: 100%;
-            transition: 0.3s;
+            background-color: var(--accent); color: white; padding: 12px 30px; 
+            border: none; border-radius: 50px; cursor: pointer; font-weight: bold;
+            width: 100%; transition: 0.3s;
         }
         #submitBtn:hover { background-color: #d97706; }
-        #submitBtn:disabled { background-color: #ccc; cursor: not-allowed; }
 
         /* === FOOTER === */
         footer { background: #0f172a; color: #94a3b8; padding: 50px 0 100px; font-size: 0.9rem; }
@@ -198,40 +182,25 @@
         .floating-wa { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
         .floating-wa:hover { background: #20bd5a; }
     </style>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "OemahDesainWeb",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-      "telephone": "+628121515633",
-      "address": { "@type": "PostalAddress", "addressLocality": "Surakarta", "addressRegion": "Jawa Tengah", "addressCountry": "ID" },
-      "priceRange": "Rp 499.000 - Rp 1.900.000",
-      "url": "https://oemahdesainweb.my.id/"
-    }
-    </script>
 </head>
 <body>
 
     <nav class="header-sticky">
-        
-        <div style="display: flex; align-items: center; font-family: sans-serif; font-weight: bold; font-size: 24px;">
-            <img src="./assets/img/logo_kita.png" alt="Logo" style="height: 40px; margin-right: 10px;">
-            <span style="color: #007bff;">Oemah</span>
-            <span style="color: #f39c12;">DesainWeb</span>
+        <div class="logo-wrapper">
+            <img src="./assets/img/logo_kita.png" alt="Logo">
+            <div>
+                <span style="color: #007bff;">Oemah</span><span style="color: #f39c12;">DesainWeb</span>
+            </div>
         </div>
-
         <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20buat%20website" class="btn-header">
             Pesan Sekarang
         </a>
-
     </nav>
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
                 <h1>Website Profesional untuk Meledakkan Omset Bisnis Anda</h1>
-                <p>Jasa pembuatan Landing Page & Toko Online terpercaya. Desain modern, loading cepat, dan siap untuk iklan Ads. Garansi Kepuasan.</p>
+                <p>Jasa pembuatan Landing Page & Toko Online terpercaya. Desain modern, loading cepat, dan siap untuk iklan Ads.</p>
                 <div class="hero-features">
                     <span><i class="fas fa-check-circle"></i> Mobile Friendly</span>
                     <span><i class="fas fa-check-circle"></i> SEO Optimized</span>
@@ -240,7 +209,7 @@
                 <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20konsultasi%20gratis" class="btn btn-cta">Konsultasi Gratis <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="hero-img">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jasa Pembuatan Website Profesional">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Website Profesional">
             </div>
         </div>
     </section>
@@ -272,7 +241,6 @@
         <div class="container text-center">
             <h2>Investasi Terbaik untuk Bisnis</h2>
             <p>Pilih paket yang sesuai dengan target bisnis Anda.</p>
-            
             <div class="pricing-grid">
                 <div class="price-card">
                     <div class="price-header">
@@ -284,8 +252,6 @@
                         <li><i class="fas fa-check"></i> 1 Halaman Sales Page</li>
                         <li><i class="fas fa-check"></i> Gratis Domain (.my.id/.biz)</li>
                         <li><i class="fas fa-check"></i> Hosting Cepat</li>
-                        <li><i class="fas fa-check"></i> Tombol WhatsApp Rotator</li>
-                        <li><i class="fas fa-check"></i> Pengerjaan 2 Hari</li>
                     </ul>
                     <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20paket%20Landing%20Page%20499rb" class="btn btn-outline">Ambil Promo</a>
                 </div>
@@ -302,12 +268,10 @@
                         <li><i class="fas fa-check"></i> <strong>Gratis Domain .COM</strong></li>
                         <li><i class="fas fa-check"></i> Hosting Premium 1 Thn</li>
                         <li><i class="fas fa-check"></i> Email Bisnis Profesional</li>
-                        <li><i class="fas fa-check"></i> Terdaftar Google Maps</li>
-                        <li><i class="fas fa-check"></i> Revisi 3x</li>
                     </ul>
                     <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20paket%20Website%20Bisnis%20899rb" class="btn btn-cta">Pesan Sekarang</a>
                 </div>
-
+                
                 <div class="price-card">
                     <div class="price-header">
                         <h3>Toko Online</h3>
@@ -318,28 +282,8 @@
                         <li><i class="fas fa-check"></i> Sistem Keranjang Belanja</li>
                         <li><i class="fas fa-check"></i> Upload Produk Unlimited</li>
                         <li><i class="fas fa-check"></i> Hitung Ongkir Otomatis</li>
-                        <li><i class="fas fa-check"></i> Laporan Penjualan</li>
-                        <li><i class="fas fa-check"></i> Integrasi Payment Gateway</li>
                     </ul>
                     <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20paket%20Toko%20Online" class="btn btn-outline">Konsultasi Dulu</a>
-                </div>
-
-                <div class="price-card" style="border: 2px dashed var(--primary); background: #f0f9ff;">
-                    <div class="price-header">
-                        <div class="badge-popular" style="background: #333;">PREMIUM</div>
-                        <h3>Aplikasi Mobile</h3>
-                        <p class="old-price">Custom Project</p>
-                        <p class="price" style="font-size: 1.5rem;">Mulai 3 Jt-an</p>
-                    </div>
-                    <ul class="price-features">
-                        <li><i class="fab fa-android" style="color: #3DDC84;"></i> <strong>Aplikasi Android (APK)</strong></li>
-                        <li><i class="fab fa-apple" style="color: #555;"></i> <strong>Aplikasi iOS (iPhone)</strong></li>
-                        <li><i class="fas fa-check"></i> Bisa Custom Fitur</li>
-                        <li><i class="fas fa-check"></i> Siap Upload Playstore</li>
-                        <li><i class="fas fa-check"></i> Siap Upload AppStore</li>
-                        <li><i class="fas fa-check"></i> UI/UX Modern</li>
-                    </ul>
-                    <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20mau%20konsultasi%20pembuatan%20Aplikasi%20Android/iOS" class="btn btn-cta" style="background: #333;">Konsultasi App</a>
                 </div>
             </div>
         </div>
@@ -348,119 +292,64 @@
     <section class="section portfolio text-center">
         <div class="container">
             <h2>Katalog Pilihan Desain</h2>
-            <p>Pilih template premium yang paling sesuai dengan karakter bisnis Anda.</p>
-            
             <div class="portfolio-grid">
-                
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Travel">
                     <div class="card-body">
                         <div class="card-cat">Travel & Wisata</div>
                         <div class="card-title">Adventure Pro</div>
-                        <p class="card-desc">Cocok untuk agen travel, sewa mobil, atau trip organizer.</p>
                         <div class="btn-group">
-                            <a href="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Lihat Gambar</a>
-                            <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Adventure%20Pro*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                            <a href="#" class="btn btn-preview">Lihat Gambar</a>
+                            <a href="https://wa.me/628121515633" class="btn btn-select">Pilih Ini</a>
                         </div>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Resto">
                     <div class="card-body">
                         <div class="card-cat">Kuliner & Resto</div>
                         <div class="card-title">Yummy Bites</div>
-                        <p class="card-desc">Desain menggugah selera untuk Cafe, Restoran, atau Catering.</p>
                         <div class="btn-group">
-                            <a href="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Lihat Gambar</a>
-                            <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Yummy%20Bites*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                            <a href="#" class="btn btn-preview">Lihat Gambar</a>
+                            <a href="https://wa.me/628121515633" class="btn btn-select">Pilih Ini</a>
                         </div>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Toko Online">
                     <div class="card-body">
                         <div class="card-cat">Toko Online</div>
                         <div class="card-title">Mega Store</div>
-                        <p class="card-desc">Template eCommerce modern. Cocok untuk jualan baju, dll.</p>
                         <div class="btn-group">
-                            <a href="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Lihat Gambar</a>
-                            <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Mega%20Store*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                            <a href="#" class="btn btn-preview">Lihat Gambar</a>
+                            <a href="https://wa.me/628121515633" class="btn btn-select">Pilih Ini</a>
                         </div>
                     </div>
                 </div>
-
             </div>
-
+            
             <button id="toggleBtn" class="btn-toggle-catalog" onclick="toggleCatalog()">
                 <i class="fas fa-chevron-down"></i> Lihat Semua Pilihan Desain
             </button>
 
             <div id="catalog-hidden" class="hidden-content">
                 <div class="portfolio-grid">
-                    
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Otomotif" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Otomotif">
                         <div class="card-body">
-                            <div class="card-cat">Sales Mobil/Motor</div>
                             <div class="card-title">Auto Dealer</div>
-                            <p class="card-desc">Wajib bagi Sales Otomotif. Tampilkan promo & harga.</p>
-                            <div class="btn-group">
-                                <a href="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Lihat Gambar</a>
-                                <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Auto%20Dealer*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
-                            </div>
+                            <a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a>
                         </div>
                     </div>
-
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Corporate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Corporate">
                         <div class="card-body">
-                            <div class="card-cat">Perusahaan / CV</div>
                             <div class="card-title">Corporate Biz</div>
-                            <p class="card-desc">Desain formal, bersih, dan elegan untuk Perusahaan.</p>
-                            <div class="btn-group">
-                                <a href="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Lihat Gambar</a>
-                                <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Corporate%20Biz*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Jasa Pembuatan Aplikasi" loading="lazy">
-                        <div class="card-body">
-                            <div class="card-cat" style="color: #333;">Custom Development</div>
-                            <div class="card-title">Aplikasi Android</div>
-                            <p class="card-desc">Jasa pembuatan aplikasi mobile (APK) untuk startup/bisnis.</p>
-                            <div class="btn-group">
-                                <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20punya%20ide%20aplikasi,%20mau%20konsultasi%20harganya" class="btn btn-select" style="background: #333;">Konsultasi Project</a>
-                            </div>
+                            <a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a>
                         </div>
                     </div>
                 </div>
-
-                <div id="seo-content">
-                    <h1>Jasa Pembuatan Website Profesional untuk Bisnis Modern</h1>
-                    <p>OemahDesainWeb adalah penyedia jasa pembuatan website profesional yang membantu pelaku usaha meningkatkan kredibilitas dan omset bisnis melalui website modern, cepat, dan SEO friendly. Kami melayani pembuatan website untuk UMKM, startup, perusahaan, hingga personal branding dengan desain yang responsif dan mengikuti standar teknologi terkini.</p>
-                    <p>Di era digital saat ini, website bukan hanya sekadar tampilan online, tetapi merupakan aset penting untuk membangun kepercayaan pelanggan. OemahDesainWeb menghadirkan solusi website yang dirancang khusus untuk kebutuhan bisnis Anda, mulai dari landing page promosi, company profile, hingga toko online yang siap digunakan untuk penjualan.</p>
-                    
-                    <h2>Layanan Jasa Website yang Kami Sediakan</h2>
-                    <ul>
-                        <li>Jasa pembuatan landing page untuk promosi produk dan jasa</li>
-                        <li>Website company profile profesional</li>
-                        <li>Website toko online siap jual</li>
-                        <li>Optimasi kecepatan dan SEO website</li>
-                        <li>Desain website responsif dan modern</li>
-                    </ul>
-                    
-                    <h2>Mengapa Memilih OemahDesainWeb?</h2>
-                    <p>OemahDesainWeb berfokus pada kualitas, performa, dan hasil. Kami memahami bahwa setiap bisnis memiliki karakter dan tujuan yang berbeda, sehingga setiap website dirancang secara custom agar sesuai dengan identitas brand dan target audiens.</p>
-                    
-                    <h3>Desain Modern dan Responsif</h3>
-                    <p>Semua website dari OemahDesainWeb menggunakan desain modern dan responsif, sehingga tampil optimal di berbagai ukuran layar, baik smartphone, tablet, maupun desktop.</p>
-                </div>
-
-            </div> 
+            </div>
         </div>
     </section>
 
@@ -468,15 +357,15 @@
         <h2 class="text-center">Pertanyaan Sering Diajukan</h2>
         <div class="faq-item">
             <div class="faq-question">Berapa lama proses pembuatannya? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Untuk Landing Page sekitar 1-2 hari kerja setelah data kami terima. Untuk Website Bisnis sekitar 3-5 hari.</div>
+            <div class="faq-answer">Untuk Landing Page sekitar 1-2 hari kerja. Untuk Website Bisnis sekitar 3-5 hari.</div>
         </div>
         <div class="faq-item">
             <div class="faq-question">Apa yang perlu saya siapkan? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Cukup siapkan materi teks (profil, layanan) dan foto produk/kegiatan usaha Anda. Sisanya kami yang atur.</div>
+            <div class="faq-answer">Cukup siapkan materi teks dan foto produk. Sisanya kami yang atur.</div>
         </div>
         <div class="faq-item">
             <div class="faq-question">Apakah ada biaya perpanjangan? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Ya, untuk perpanjangan Domain dan Hosting di tahun berikutnya. Biayanya terjangkau, mulai 350rb/tahun.</div>
+            <div class="faq-answer">Ya, mulai 350rb/tahun untuk perpanjangan domain & hosting.</div>
         </div>
     </section>
 
@@ -494,9 +383,7 @@
             <input type="text" id="botField" style="display:none !important" tabindex="-1" autocomplete="off">
                         
             <br>
-            <button id="submitBtn" type="button">
-             Kirim Ulasan
-            </button>
+            <button id="submitBtn" type="button">Kirim Ulasan</button>
             
             <p style="margin-top: 10px; font-size: 0.8rem; color: #666;">
                 👁 Pengunjung hari ini: <span id="visitorCount">...</span>
@@ -506,13 +393,12 @@
         </div>
     </section>
     
-    
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>OemahDesainWeb</h3>
-                    <p>Jasa pembuatan website profesional yang membantu UMKM dan Pebisnis Indonesia Go Digital dengan biaya terjangkau dan kualitas terbaik.</p>
+                    <p>Jasa pembuatan website profesional yang membantu UMKM dan Pebisnis Indonesia Go Digital.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Hubungi Kami</h3>
@@ -521,21 +407,14 @@
                 </div>
                 <div class="footer-col">
                     <h3>Ikuti Kami</h3>
-                    <p>Dapatkan tips digital marketing gratis:</p>
                     <div class="social-icons">
-                        <a href="https://web.facebook.com/cahangon.alvaromeo.999" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/alvaromeo999/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@alvaromeo.999" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.linkedin.com/in/alvaromeo-indonesia-565a38278" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
-
             <div class="legal-section">
-                <div class="legal-text">
-                    <p><strong>Disclaimer:</strong> Layanan kami menjamin kualitas teknis website sesuai kesepakatan. Peningkatan omset/penjualan bergantung pada strategi marketing masing-masing klien.</p>
-                    <p><strong>Kepatuhan Hukum:</strong> OemahDesainWeb tunduk dan patuh pada ketentuan <em>Undang-Undang Informasi dan Transaksi Elektronik (UU ITE)</em>. Kami menjamin kerahasiaan data klien.</p>
-                </div>
                 <p>&copy; 2026 OemahDesainWeb. All Rights Reserved.</p>
             </div>
         </div>
@@ -547,26 +426,19 @@
     </a>
 
     <script>
-        // Script untuk FAQ
         const faqs = document.querySelectorAll('.faq-item');
         faqs.forEach(faq => {
-            faq.addEventListener('click', () => {
-                faq.classList.toggle('active');
-            });
+            faq.addEventListener('click', () => { faq.classList.toggle('active'); });
         });
-
-        // Script untuk Tombol Buka Tutup Katalog
         function toggleCatalog() {
             var hiddenDiv = document.getElementById("catalog-hidden");
             var btn = document.getElementById("toggleBtn");
-            
             if (hiddenDiv.style.display === "none" || hiddenDiv.style.display === "") {
                 hiddenDiv.style.display = "block";
                 btn.innerHTML = '<i class="fas fa-chevron-up"></i> Tutup Katalog';
             } else {
                 hiddenDiv.style.display = "none";
                 btn.innerHTML = '<i class="fas fa-chevron-down"></i> Lihat Semua Pilihan Desain';
-                // Scroll balik ke atas tombol biar rapi
                 btn.scrollIntoView({behavior: "smooth", block: "center"});
             }
         }
