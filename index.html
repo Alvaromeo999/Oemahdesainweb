@@ -1,201 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta name="google-site-verification" content="aOVJVMB766JfhfdOiit6A_78IzIQk81NpmRBCA-12HI" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-72SQQ9Q9YT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-72SQQ9Q9YT');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasa Pembuatan Website Murah & Landing Page 499rb - OemahDesainWeb</title>
-    <meta name="description" content="Jasa pembuatan website profesional dan landing page murah mulai Rp 499rb. Terima beres, desain premium, gratis domain & hosting. Pengerjaan 2 hari.">
-    <meta name="keywords" content="jasa pembuatan website murah, jasa landing page, bikin web umkm, jasa website terpercaya, oemahdesainweb, buat toko online">
+    <title>Jasa Pembuatan Website Murah - OemahDesainWeb</title>
     
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* === RESET & DASAR === */
-        :root { --primary: #2563eb; --secondary: #1e40af; --accent: #f59e0b; --text: #333333; --bg-light: #f8fafc; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
-        body { 
-            color: var(--text); 
-            line-height: 1.6; 
-            background-color: var(--bg-light); 
-            scroll-behavior: smooth; 
-            overflow-x: hidden; 
-            padding-top: 80px; /* Default Desktop Padding */
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-
-        /* === HEADER STICKY (RESPONSIF DIPERBAIKI) === */
-        .header-sticky {
-            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
-            background-color: var(--white);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; z-index: 9999; transition: 0.3s;
-        }
-
-        /* Wrapper Logo agar tulisan tidak berantakan */
-        .logo-wrapper {
-            display: flex; align-items: center;
-            font-family: sans-serif; font-weight: bold; font-size: 22px;
-            white-space: nowrap; /* Mencegah tulisan turun baris */
-        }
-        .logo-wrapper img { height: 40px; margin-right: 10px; }
-
-        /* Tombol Header */
-        .btn-header {
-            background-color: var(--accent); color: white;
-            padding: 10px 25px; border-radius: 50px;
-            font-weight: bold; font-size: 0.9rem;
-            transition: 0.3s; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
-            white-space: nowrap;
-        }
-        .btn-header:hover { background-color: #d97706; transform: translateY(-2px); }
-
-        /* === RESPONSIVE KHUSUS HP (AGAR TIDAK POTONGAN) === */
-        @media (max-width: 600px) {
-            .header-sticky { height: 60px; padding: 0 15px; }
-            body { padding-top: 60px; } /* Sesuaikan jarak body */
-            
-            /* Logo Mengecil Otomatis */
-            .logo-wrapper { font-size: 16px; } 
-            .logo-wrapper img { height: 28px; margin-right: 5px; }
-
-            /* Tombol Mengecil Otomatis */
-            .btn-header { padding: 8px 15px; font-size: 0.75rem; }
-        }
-
-        /* === UTILITY === */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .text-center { text-align: center; }
-        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: bold; transition: 0.2s; cursor: pointer; }
-        .btn-cta { background-color: var(--accent); color: white; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3); }
-        .btn-cta:hover { transform: translateY(-2px); background-color: #d97706; }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
-        .btn-outline:hover { background: var(--primary); color: white; }
-        .section { padding: 60px 0; }
-
-        /* === HERO === */
-        .hero { background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%); padding: 60px 0 60px; }
-        .hero-content { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-        .hero-text { flex: 1; min-width: 100%; } 
-        .hero-text h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 15px; color: #1e293b; }
-        .hero-features span { display: inline-block; margin-right: 15px; margin-bottom: 10px; font-size: 0.9rem; font-weight: 500; }
-        .hero-features i { color: #10b981; margin-right: 5px; }
-        .hero-img { flex: 1; min-width: 100%; }
-        .hero-img img { border-radius: 15px; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1); width: 100%; }
-        @media (min-width: 768px) { .hero-text, .hero-img { min-width: 400px; } }
-
-        /* === PAIN POINTS === */
-        .pain { background: var(--white); }
-        .pain h2 { font-size: 1.8rem; margin-bottom: 40px; }
-        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .pain-card { padding: 25px; border: 1px solid #f1f5f9; border-radius: 15px; text-align: center; }
-        .pain-card i { font-size: 35px; color: #ef4444; margin-bottom: 15px; background: #fee2e2; padding: 15px; border-radius: 50%; width: 70px; height: 70px; line-height: 40px; }
-        
-        /* === PRICING === */
-        .pricing { background: #f8fafc; }
-        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
-        .price-card { background: var(--white); border-radius: 15px; padding: 30px 25px; width: 100%; max-width: 320px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; position: relative; }
-        .price-card.popular { border: 2px solid var(--primary); transform: scale(1.02); z-index: 2; }
-        .badge-popular { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-        .price-header h3 { font-size: 1.3rem; margin-bottom: 5px; }
-        .price-header .price { font-size: 2rem; font-weight: 700; color: var(--primary); }
-        .price-header .old-price { text-decoration: line-through; color: #94a3b8; font-size: 0.9rem; }
-        .price-features { margin: 20px 0; text-align: left; }
-        .price-features li { margin-bottom: 10px; font-size: 0.9rem; color: #475569; }
-        .price-features i { color: #10b981; margin-right: 8px; }
-
-        /* === PORTFOLIO & KATALOG === */
-        .portfolio { background: var(--white); }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
-        
-        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; text-align: left; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .card-img { height: 200px; width: 100%; object-fit: cover; border-bottom: 1px solid #eee; }
-        .card-body { padding: 20px; }
-        .card-cat { font-size: 0.8rem; color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .card-title { font-size: 1.2rem; margin: 5px 0 10px; font-weight: 700; color: #1e293b; }
-        .card-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; line-height: 1.5; }
-        .btn-group { display: flex; gap: 10px; }
-        .btn-preview { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--primary); color: var(--primary); text-align: center; font-size: 0.9rem; }
-        .btn-preview:hover { background: #eff6ff; }
-        .btn-select { flex: 1; padding: 10px; border-radius: 8px; background: var(--primary); color: white; text-align: center; font-size: 0.9rem; }
-        .btn-select:hover { background: #1d4ed8; }
-
-        .btn-toggle-catalog { margin-top: 40px; background: white; border: 2px solid var(--primary); color: var(--primary); padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn-toggle-catalog:hover { background: var(--primary); color: white; }
-        .hidden-content { display: none; margin-top: 30px; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* === SEO CONTENT === */
-        #seo-content { margin-top: 60px; padding: 30px; background: #f1f5f9; border-radius: 15px; text-align: left; }
-        #seo-content h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 15px; }
-        #seo-content h2 { font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; }
-        #seo-content p { font-size: 0.9rem; margin-bottom: 10px; color: #475569; }
-        #seo-content ul { padding-left: 20px; font-size: 0.9rem; color: #475569; }
-
-        /* === FAQ === */
-        .faq { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
-        .faq-item { background: var(--white); margin-bottom: 10px; padding: 15px 20px; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
-        .faq-question { font-weight: 600; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 10px; color: #666; font-size: 0.9rem; }
-        .faq-item.active .faq-answer { display: block; }
-
-        /* === REVIEW SECTION (FIXED) === */
-        .review-section { padding: 40px 20px; background: white; max-width: 600px; margin: 0 auto; text-align: left; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .review-box textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin: 10px 0; font-family: inherit; }
-        
-        .stars span { font-size: 35px; cursor: pointer; color: #ccc; transition: color 0.2s; }
-        .stars span.active { color: #f39c12; }
-        
-        #submitBtn {
-            background-color: var(--accent); color: white; padding: 12px 30px; 
-            border: none; border-radius: 50px; cursor: pointer; font-weight: bold;
-            width: 100%; transition: 0.3s;
-        }
-        #submitBtn:hover { background-color: #d97706; }
-
-        /* === FOOTER === */
-        footer { background: #0f172a; color: #94a3b8; padding: 50px 0 100px; font-size: 0.9rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .footer-col h3 { color: white; margin-bottom: 15px; font-size: 1.1rem; }
-        .social-icons { display: flex; gap: 10px; margin-top: 15px; }
-        .social-icons a { width: 35px; height: 35px; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; border-radius: 50%; color: white; transition: 0.3s; }
-        .social-icons a:hover { background: var(--primary); }
-        .legal-section { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; }
-        
-        /* === FLOATING WA === */
-        .floating-wa { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
-        .floating-wa:hover { background: #20bd5a; }
-    </style>
 </head>
 <body>
 
     <nav class="header-sticky">
         <div class="logo-wrapper">
             <img src="./assets/img/logo_kita.png" alt="Logo">
-            <div>
-                <span style="color: #007bff;">Oemah</span><span style="color: #f39c12;">DesainWeb</span>
-            </div>
+            <div><span style="color: #007bff;">Oemah</span><span style="color: #f39c12;">DesainWeb</span></div>
         </div>
-        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20buat%20website" class="btn-header">
-            Pesan Sekarang
-        </a>
+        <a href="https://wa.me/628121515633" class="btn-header">Pesan Sekarang</a>
     </nav>
+
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
@@ -206,7 +30,7 @@
                     <span><i class="fas fa-check-circle"></i> SEO Optimized</span>
                     <span><i class="fas fa-check-circle"></i> Free Domain</span>
                 </div>
-                <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20konsultasi%20gratis" class="btn btn-cta">Konsultasi Gratis <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/628121515633" class="btn btn-cta">Konsultasi Gratis <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="hero-img">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Website Profesional">
@@ -240,50 +64,22 @@
     <section id="harga" class="section pricing">
         <div class="container text-center">
             <h2>Investasi Terbaik untuk Bisnis</h2>
-            <p>Pilih paket yang sesuai dengan target bisnis Anda.</p>
             <div class="pricing-grid">
                 <div class="price-card">
-                    <div class="price-header">
-                        <h3>Landing Page</h3>
-                        <p class="old-price">Rp 900.000</p>
-                        <p class="price">Rp 499rb</p>
-                    </div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> 1 Halaman Sales Page</li>
-                        <li><i class="fas fa-check"></i> Gratis Domain (.my.id/.biz)</li>
-                        <li><i class="fas fa-check"></i> Hosting Cepat</li>
-                    </ul>
-                    <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20paket%20Landing%20Page%20499rb" class="btn btn-outline">Ambil Promo</a>
+                    <div class="price-header"><h3>Landing Page</h3><p class="price">Rp 499rb</p></div>
+                    <ul class="price-features"><li><i class="fas fa-check"></i> 1 Halaman Sales Page</li><li><i class="fas fa-check"></i> Gratis Domain</li><li><i class="fas fa-check"></i> Hosting Cepat</li></ul>
+                    <a href="https://wa.me/628121515633" class="btn btn-outline">Ambil Promo</a>
                 </div>
-
                 <div class="price-card popular">
                     <div class="badge-popular">PALING LARIS</div>
-                    <div class="price-header">
-                        <h3>Website Bisnis</h3>
-                        <p class="old-price">Rp 1.500.000</p>
-                        <p class="price">Rp 899rb</p>
-                    </div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> <strong>5 Halaman Website</strong></li>
-                        <li><i class="fas fa-check"></i> <strong>Gratis Domain .COM</strong></li>
-                        <li><i class="fas fa-check"></i> Hosting Premium 1 Thn</li>
-                        <li><i class="fas fa-check"></i> Email Bisnis Profesional</li>
-                    </ul>
-                    <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20paket%20Website%20Bisnis%20899rb" class="btn btn-cta">Pesan Sekarang</a>
+                    <div class="price-header"><h3>Website Bisnis</h3><p class="price">Rp 899rb</p></div>
+                    <ul class="price-features"><li><i class="fas fa-check"></i> 5 Halaman</li><li><i class="fas fa-check"></i> Domain .COM</li><li><i class="fas fa-check"></i> Email Bisnis</li></ul>
+                    <a href="https://wa.me/628121515633" class="btn btn-cta">Pesan Sekarang</a>
                 </div>
-                
                 <div class="price-card">
-                    <div class="price-header">
-                        <h3>Toko Online</h3>
-                        <p class="old-price">Rp 3.000.000</p>
-                        <p class="price">Rp 1.9jt</p>
-                    </div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Sistem Keranjang Belanja</li>
-                        <li><i class="fas fa-check"></i> Upload Produk Unlimited</li>
-                        <li><i class="fas fa-check"></i> Hitung Ongkir Otomatis</li>
-                    </ul>
-                    <a href="https://wa.me/628121515633?text=Halo,%20saya%20mau%20paket%20Toko%20Online" class="btn btn-outline">Konsultasi Dulu</a>
+                    <div class="price-header"><h3>Toko Online</h3><p class="price">Rp 1.9jt</p></div>
+                    <ul class="price-features"><li><i class="fas fa-check"></i> Keranjang Belanja</li><li><i class="fas fa-check"></i> Hitung Ongkir</li><li><i class="fas fa-check"></i> Payment Gateway</li></ul>
+                    <a href="https://wa.me/628121515633" class="btn btn-outline">Konsultasi</a>
                 </div>
             </div>
         </div>
@@ -293,39 +89,9 @@
         <div class="container">
             <h2>Katalog Pilihan Desain</h2>
             <div class="portfolio-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Travel">
-                    <div class="card-body">
-                        <div class="card-cat">Travel & Wisata</div>
-                        <div class="card-title">Adventure Pro</div>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-preview">Lihat Gambar</a>
-                            <a href="https://wa.me/628121515633" class="btn btn-select">Pilih Ini</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Resto">
-                    <div class="card-body">
-                        <div class="card-cat">Kuliner & Resto</div>
-                        <div class="card-title">Yummy Bites</div>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-preview">Lihat Gambar</a>
-                            <a href="https://wa.me/628121515633" class="btn btn-select">Pilih Ini</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Toko Online">
-                    <div class="card-body">
-                        <div class="card-cat">Toko Online</div>
-                        <div class="card-title">Mega Store</div>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-preview">Lihat Gambar</a>
-                            <a href="https://wa.me/628121515633" class="btn btn-select">Pilih Ini</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img"><div class="card-body"><div class="card-title">Adventure Pro</div><a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img"><div class="card-body"><div class="card-title">Yummy Bites</div><a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img"><div class="card-body"><div class="card-title">Mega Store</div><a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a></div></div>
             </div>
             
             <button id="toggleBtn" class="btn-toggle-catalog" onclick="toggleCatalog()">
@@ -334,20 +100,8 @@
 
             <div id="catalog-hidden" class="hidden-content">
                 <div class="portfolio-grid">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Otomotif">
-                        <div class="card-body">
-                            <div class="card-title">Auto Dealer</div>
-                            <a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Corporate">
-                        <div class="card-body">
-                            <div class="card-title">Corporate Biz</div>
-                            <a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a>
-                        </div>
-                    </div>
+                    <div class="card"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img"><div class="card-body"><div class="card-title">Auto Dealer</div><a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a></div></div>
+                    <div class="card"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img"><div class="card-body"><div class="card-title">Corporate Biz</div><a href="https://wa.me/628121515633" class="btn btn-select" style="width:100%">Pilih Ini</a></div></div>
                 </div>
             </div>
         </div>
@@ -355,68 +109,44 @@
 
     <section class="faq">
         <h2 class="text-center">Pertanyaan Sering Diajukan</h2>
-        <div class="faq-item">
-            <div class="faq-question">Berapa lama proses pembuatannya? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Untuk Landing Page sekitar 1-2 hari kerja. Untuk Website Bisnis sekitar 3-5 hari.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Apa yang perlu saya siapkan? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Cukup siapkan materi teks dan foto produk. Sisanya kami yang atur.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Apakah ada biaya perpanjangan? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Ya, mulai 350rb/tahun untuk perpanjangan domain & hosting.</div>
-        </div>
+        <div class="faq-item"><div class="faq-question">Berapa lama prosesnya? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Sekitar 1-2 hari kerja untuk Landing Page, dan 3-5 hari untuk Website Bisnis.</div></div>
+        <div class="faq-item"><div class="faq-question">Apa yang perlu disiapkan? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Materi teks, logo, dan foto produk.</div></div>
+        <div class="faq-item"><div class="faq-question">Biaya perpanjangan? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Mulai Rp 350.000/tahun untuk domain & hosting.</div></div>
     </section>
 
     <section id="review" class="section text-center">
         <h2>Ulasan Pelanggan</h2>
-        <div id="averageDisplay" style="margin-bottom: 20px; font-weight: bold; font-size: 1.2rem;"></div>
-
+        <div id="averageDisplay" style="margin-bottom:20px; font-weight:bold; font-size:1.2rem;"></div>
         <div class="review-section">
-            <div class="stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-            </div>
-
-            <textarea id="reviewText" placeholder="Tulis pengalaman Anda menggunakan jasa kami..."></textarea>
-            
-            <input type="text" id="botField" style="display:none !important" tabindex="-1" autocomplete="off">
-                        
-            <br>
-            <button id="submitBtn" type="button">Kirim Ulasan</button>
-            
-            <p style="margin-top: 10px; font-size: 0.8rem; color: #666;">
-                👁 Pengunjung hari ini: <span id="visitorCount">...</span>
-            </p>
-
-            <div id="reviewList" style="margin-top: 30px;"></div>
+            <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <textarea id="reviewText" placeholder="Tulis pengalaman Anda..."></textarea>
+            <input type="text" id="botField" style="display:none !important">
+            <br><button id="submitBtn" type="button">Kirim Ulasan</button>
+            <p style="margin-top:10px; font-size:0.8rem; color:#666;">👁 Pengunjung: <span id="visitorCount">...</span></p>
+            <div id="reviewList" style="margin-top:30px;"></div>
         </div>
     </section>
-    
+
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>OemahDesainWeb</h3>
-                    <p>Jasa pembuatan website profesional yang membantu UMKM dan Pebisnis Indonesia Go Digital.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Hubungi Kami</h3>
-                    <p><i class="fas fa-whatsapp"></i> 0812-1515-633</p>
-                    <p><i class="fas fa-map-marker-alt"></i> SOLORAYA, Jawa Tengah, Indonesia</p>
-                </div>
+                <div class="footer-col"><h3>OemahDesainWeb</h3><p>Jasa pembuatan website profesional.</p></div>
+                <div class="footer-col"><h3>Hubungi</h3><p><i class="fas fa-whatsapp"></i> 0812-1515-633</p></div>
                 <div class="footer-col">
                     <h3>Ikuti Kami</h3>
                     <div class="social-icons">
-                        <a href="https://web.facebook.com/cahangon.alvaromeo.999" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/alvaromeo999/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@alvaromeo.999" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.linkedin.com/in/alvaromeo-indonesia-565a38278" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://web.facebook.com/cahangon.alvaromeo.999"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/alvaromeo999/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@alvaromeo.999"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.linkedin.com/in/alvaromeo-indonesia-565a38278"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="legal-section">
-                <p>&copy; 2026 OemahDesainWeb. All Rights Reserved.</p>
-            </div>
+            <div class="legal-section"><p>&copy; 2026 OemahDesainWeb. All Rights Reserved.</p></div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
