@@ -29,5 +29,7 @@ function submitReview() {
 let count = localStorage.getItem('visitorCount') || 0;
 count++;
 localStorage.setItem('visitorCount', count);
-document.getElementById('visitorCount').innerText = count;
+document.getElementById('reviewText').placeholder =
+  "Terima kasih! Ulasan Anda berhasil dikirim 😊";
+
                         
