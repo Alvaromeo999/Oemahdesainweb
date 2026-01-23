@@ -3,7 +3,8 @@
 // ===============================
 const supabaseUrl = 'https://XXXXX.supabase.co'
 const supabaseKey = 'PUBLIC_ANON_KEY'
-const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+const sb = supabase.createClient(supabaseUrl, supabaseKey)
+
 
 // ===============================
 // RATING
