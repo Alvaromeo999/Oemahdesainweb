@@ -1,10 +1,11 @@
 .review-box {
-  max-width: 500px;
-  margin: auto;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  max-width: 520px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
+
 
 .stars span {
   font-size: 24px;
