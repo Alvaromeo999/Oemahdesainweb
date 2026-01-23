@@ -403,14 +403,15 @@
                 <div class="footer-col">
                     <h3>Hubungi Kami</h3>
                     <p><i class="fas fa-whatsapp"></i> 0812-1515-633</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Jawa Tengah, Indonesia</p>
+                    <p><i class="fas fa-map-marker-alt"></i> SOLORAYA, Jawa Tengah, Indonesia</p>
                 </div>
                 <div class="footer-col">
                     <h3>Ikuti Kami</h3>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://web.facebook.com/cahangon.alvaromeo.999" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/alvaromeo999/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@alvaromeo.999" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.linkedin.com/in/alvaromeo-indonesia-565a38278" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -419,32 +420,3 @@
             </div>
         </div>
     </footer>
-
-    <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20mau%20tanya%20jasa%20pembuatan%20website" class="floating-wa" target="_blank">
-        <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
-        <span>Chat Kami</span>
-    </a>
-
-    <script>
-        const faqs = document.querySelectorAll('.faq-item');
-        faqs.forEach(faq => {
-            faq.addEventListener('click', () => { faq.classList.toggle('active'); });
-        });
-        function toggleCatalog() {
-            var hiddenDiv = document.getElementById("catalog-hidden");
-            var btn = document.getElementById("toggleBtn");
-            if (hiddenDiv.style.display === "none" || hiddenDiv.style.display === "") {
-                hiddenDiv.style.display = "block";
-                btn.innerHTML = '<i class="fas fa-chevron-up"></i> Tutup Katalog';
-            } else {
-                hiddenDiv.style.display = "none";
-                btn.innerHTML = '<i class="fas fa-chevron-down"></i> Lihat Semua Pilihan Desain';
-                btn.scrollIntoView({behavior: "smooth", block: "center"});
-            }
-        }
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
-</body>
-</html>
