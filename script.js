@@ -5,7 +5,6 @@ const supabaseUrl = 'https://XXXXX.supabase.co'
 const supabaseKey = 'PUBLIC_ANON_KEY'
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
 
-
 // ===============================
 // RATING
 // ===============================
@@ -23,52 +22,4 @@ document.querySelectorAll('.stars span').forEach((star, index) => {
 
 // ===============================
 // SUBMIT REVIEW
-// ===============================
-async function submitReview() {
-  const text = document.getElementById('reviewText').value.trim()
-
-  if (!text || selectedRating === 0) {
-    alert('Isi rating & review dulu ya 🙂')
-    return
-  }
-
-  const { error } = await supabase
-    .from('reviews')
-    .insert([{
-      rating: selectedRating,
-      comment: text
-    }])
-
-  if (error) {
-    console.error(error)
-    alert('Gagal kirim ulasan')
-    return
-  }
-
-  document.getElementById('reviewText').value = ''
-  selectedRating = 0
-  loadReviews()
-}
-
-// ===============================
-// LOAD REVIEWS
-// ===============================
-async function loadReviews() {
-  const { data, error } = await supabase
-    .from('reviews')
-    .select('*')
-    .order('created_at', { ascending: false })
-
-  if (error) return
-
-  const list = document.getElementById('reviewList')
-  list.innerHTML = ''
-
-  data.forEach(r => {
-    list.innerHTML += `
-      <p>⭐ ${r.rating}/5<br>${r.comment}</p><hr>
-    `
-  })
-}
-
-loadReviews()
+// =====================
