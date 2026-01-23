@@ -3,7 +3,7 @@
 // ===============================
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
 
-// JANGAN LUPA: Paste kode Key 'anon public' kamu di sini
+// Masukkan Key Anon Public kamu di sini
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' 
 
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SETUP BINTANG ---
     let selectedRating = 0;
     const stars = document.querySelectorAll('.stars span');
+
     stars.forEach((star, index) => {
         star.addEventListener('click', () => {
             selectedRating = index + 1;
@@ -44,12 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = "Mengirim...";
             submitBtn.disabled = true;
 
-            // KIRIM KE TABEL 'reviews' (Sesuai nama di Database kamu)
+            // PERBAIKAN DI SINI: Sesuaikan dengan nama tabel 'reviews'
             const { error } = await sb
                 .from('reviews') 
                 .insert([{
-                    rating: selectedRating,  // Nama kolom di DB: rating
-                    review: text             // Nama kolom di DB: review
+                    rating: selectedRating,  // Kolom di DB: rating
+                    review: text             // Kolom di DB: review
                 }]);
 
             submitBtn.textContent = "Kirim Ulasan";
@@ -69,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load ulasan saat pertama buka
     loadReviews();
 });
 
@@ -80,23 +80,22 @@ async function loadReviews() {
     const list = document.getElementById('reviewList');
     if (!list) return;
 
-    // AMBIL DATA DARI TABEL 'reviews'
+    // PERBAIKAN DI SINI: Ambil dari tabel 'reviews'
     const { data, error } = await sb
         .from('reviews')
         .select('*')
-        .order('created_at', { ascending: false }); // Nama kolom: created_at
+        .order('created_at', { ascending: false });
 
     if (!error && data) {
         list.innerHTML = '';
         data.forEach(r => {
-            // Logic Bintang
             let starDisplay = '';
-            // Perhatikan: kita pakai r.rating (bukan r.peringkat)
+            // Pakai r.rating (bukan r.peringkat)
             for(let i=0; i<5; i++) {
                 starDisplay += i < r.rating ? '★' : '☆';
             }
             
-            // Perhatikan: kita pakai r.review (bukan r.tinjauan_teks)
+            // Pakai r.review (bukan r.tinjauan_teks)
             list.innerHTML += `
                 <div style="border-bottom:1px solid #ddd; margin-bottom:10px; padding-bottom:10px;">
                     <div style="color:gold; font-size:1.2em;">${starDisplay}</div>
