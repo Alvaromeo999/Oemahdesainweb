@@ -141,6 +141,28 @@
         /* FLOATING WA */
         .floating-wa { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
         .floating-wa:hover { background: #20bd5a; }
+
+        <style>
+    /* Bintang diam (sebelum diklik) warnanya abu-abu */
+    .stars span {
+        font-size: 30px;
+        cursor: pointer;
+        color: #ccc; /* Warna abu-abu */
+        transition: color 0.2s;
+    }
+
+    /* KETIKA DIKLIK: Class 'active' ditambahkan oleh JS, ubah jadi kuning */
+    .stars span.active {
+        color: gold; /* Atau warna #ffc107 */
+    }
+    
+    /* OPSIONAL: Efek saat mouse melayang (hover) */
+    .stars span:hover {
+        color: orange;
+    }
+</style>
+        
+    
     </style>
     
     <script type="application/ld+json">
