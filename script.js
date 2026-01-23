@@ -1,127 +1,126 @@
 // ===============================
-// 1. KONFIGURASI SUPABASE (VERSI BROWSER)
+// 1. SETUP SUPABASE
 // ===============================
-// Masukkan URL dan Key Anon kamu langsung di sini (String)
+// Hati-hati: Gunakan tanda sama dengan (=) dan tanda petik ('...')
+const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
 
-const supabase Url = 'https://tosjjicxibibuxpskpjz.supabase.co'
-const Publishable Key ='sb_publishable_gTmur1J62LkEE4nG8EE_pg_2YFwV7nf'
-const supabase Anon Key (Legacy) = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0...' // <-- GANTI DENGAN KEY PANJANG DARI DASHBOARD
+// GANTI TEXT DI BAWAH DENGAN KODE "ANON PUBLIC" PANJANG DARI DASHBOARD
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' 
 
-// Pastikan library supabase sudah dimuat di HTML (cek langkah 2 di bawah)
+// Inisialisasi Client
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
 
 // ===============================
-// 2. LOGIKA UTAMA (JALAN SETELAH WEBSITE LOAD)
+// 2. LOGIKA UTAMA (Jalan setelah website selesai loading)
 // ===============================
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- A. LOGIKA RATING BINTANG ---
-    let selectedRating = 0
-    const stars = document.querySelectorAll('.stars span') // Pastikan class di HTML adalah "stars" dan isinya "span"
+    // --- SETUP BINTANG ---
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.stars span');
     
     if (stars.length === 0) {
-        console.error("Elemen bintang tidak ditemukan! Cek class HTML-nya.")
+        console.error("Error: Elemen bintang tidak ditemukan di HTML");
     }
 
     stars.forEach((star, index) => {
         star.addEventListener('click', () => {
-            selectedRating = index + 1
-            // Reset semua bintang jadi abu-abu/kosong
-            stars.forEach(s => s.classList.remove('active'))
-            // Warnai bintang sesuai urutan yang diklik
+            selectedRating = index + 1;
+            // Reset warna semua bintang
+            stars.forEach(s => s.classList.remove('active'));
+            // Warnai bintang yang dipilih
             for (let i = 0; i < selectedRating; i++) {
-                stars[i].classList.add('active')
+                stars[i].classList.add('active');
             }
-            console.log("Rating dipilih:", selectedRating) // Cek di konsol browser
-        })
-    })
+            console.log("Rating dipilih:", selectedRating);
+        });
+    });
 
-    // --- B. LOGIKA KIRIM ULASAN ---
-    const submitBtn = document.getElementById('submitBtn') // Pastikan ID tombol di HTML = "submitBtn"
+    // --- SETUP TOMBOL KIRIM ---
+    const submitBtn = document.getElementById('submitBtn');
 
-    // Kita buat fungsinya di dalam sini agar rapi
-    async function handleReviewSubmit() {
-        const textElement = document.getElementById('reviewText') // Pastikan ID textarea = "reviewText"
-        const text = textElement ? textElement.value.trim() : ''
+    if (!submitBtn) {
+        console.error("Error: Tombol dengan id 'submitBtn' tidak ditemukan");
+        return; // Stop jika tombol tidak ada
+    }
 
+    // Fungsi saat tombol diklik
+    submitBtn.addEventListener('click', async () => {
+        console.log("Tombol ditekan..."); // Cek debug
+
+        const textElement = document.getElementById('reviewText');
+        const text = textElement ? textElement.value.trim() : '';
+
+        // Validasi Input
         if (!text || selectedRating === 0) {
-            alert('Mohon isi rating bintang & ulasan teks dulu ya 🙂')
-            return
+            alert('Mohon isi rating bintang & ulasan teks dulu ya 🙂');
+            return;
         }
 
-        // Tampilkan loading (opsional)
-        submitBtn.textContent = "Mengirim..."
-        submitBtn.disabled = true
+        // Ubah tombol jadi loading
+        submitBtn.textContent = "Mengirim...";
+        submitBtn.disabled = true;
 
+        // Kirim ke Supabase
         const { error } = await sb
             .from('ulasan')
             .insert([{
                 peringkat: selectedRating,
                 tinjauan_teks: text
-            }])
+            }]);
 
         // Kembalikan tombol
-        submitBtn.textContent = "Kirim"
-        submitBtn.disabled = false
+        submitBtn.textContent = "Kirim Ulasan";
+        submitBtn.disabled = false;
 
+        // Cek Hasil
         if (error) {
-            console.error("Error upload:", error)
-            alert('Gagal kirim ulasan: ' + error.message)
-            return
+            console.error("Gagal kirim:", error);
+            alert('Gagal kirim ulasan. Cek konsol untuk detail.');
+        } else {
+            alert('Terima kasih! Ulasan berhasil dikirim.');
+            // Reset Form
+            document.getElementById('reviewText').value = '';
+            selectedRating = 0;
+            stars.forEach(s => s.classList.remove('active'));
+            
+            // Reload list ulasan (jika ada fungsinya)
+            if (typeof loadReviews === 'function') {
+                loadReviews();
+            }
         }
+    });
 
-        // Reset Form jika sukses
-        alert('Terima kasih ulasannya!')
-        document.getElementById('reviewText').value = ''
-        selectedRating = 0
-        stars.forEach(s => s.classList.remove('active'))
-        
-        loadReviews() // Refresh list ulasan
+    // Panggil fungsi load ulasan di awal (jika ada)
+    if (typeof loadReviews === 'function') {
+        loadReviews();
     }
-
-    // Pasang Event Listener ke Tombol
-    if (submitBtn) {
-        // Hapus "onclick" di HTML, kita pakai ini saja biar aman
-        submitBtn.addEventListener('click', handleReviewSubmit)
-    } else {
-        console.error("Tombol dengan ID 'submitBtn' tidak ditemukan!")
-    }
-
-    // Load ulasan saat pertama buka
-    loadReviews()
-})
+});
 
 // ===============================
-// 3. FUNGSI LOAD ULASAN
+// 3. FUNGSI LOAD ULASAN (Agar tampil di bawah)
 // ===============================
 async function loadReviews() {
-    const list = document.getElementById('reviewList') // Pastikan ID container list = "reviewList"
-    if (!list) return
+    const list = document.getElementById('reviewList');
+    if (!list) return;
 
     const { data, error } = await sb
         .from('ulasan')
         .select('*')
-        .order('dibuat_pada', { ascending: false })
+        .order('dibuat_pada', { ascending: false });
 
-    if (error) {
-        console.error("Gagal ambil data:", error)
-        return
+    if (!error && data) {
+        list.innerHTML = '';
+        data.forEach(r => {
+            let starDisplay = '';
+            for(let i=0; i<5; i++) {
+                starDisplay += i < r.peringkat ? '★' : '☆';
+            }
+            list.innerHTML += `
+                <div style="border-bottom:1px solid #ddd; margin-bottom:10px; padding-bottom:10px;">
+                    <div style="color:gold; font-size:1.2em;">${starDisplay}</div>
+                    <p>${r.tinjauan_teks}</p>
+                </div>`;
+        });
     }
-
-    list.innerHTML = ''
-    data.forEach(r => {
-        // Render bintang kuning sesuai jumlah rating
-        let starDisplay = ''
-        for(let i=0; i<5; i++) {
-            starDisplay += i < r.peringkat ? '★' : '☆' 
-        }
-
-        list.innerHTML += `
-            <div class="review-item" style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-                <div style="color: gold; font-size: 1.2rem;">${starDisplay}</div>
-                <p>${r.tinjauan_teks}</p>
-                <small style="color: grey;">${new Date(r.dibuat_pada).toLocaleDateString()}</small>
-            </div>
-        `
-    })
 }
