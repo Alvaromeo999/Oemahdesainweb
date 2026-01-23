@@ -2,103 +2,110 @@
 // 1. SETUP SUPABASE
 // ===============================
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
-// Masukkan Key Anon Public kamu lagi di sini
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' 
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' // <--- JANGAN LUPA ISI KEY LAGI
 
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
-
-// Password Admin Sederhana (Ganti sesukamu)
-const ADMIN_SECRET = "OemahDesain2026";
+const ADMIN_SECRET = "12345"; 
 
 // ===============================
 // 2. LOGIKA UTAMA
 // ===============================
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- FITUR RAHASIA: PELACAK PENGUNJUNG ---
+    trackVisitor(); 
+
     // --- SETUP BINTANG ---
     let selectedRating = 0;
     const stars = document.querySelectorAll('.stars span');
-
     stars.forEach((star, index) => {
         star.addEventListener('click', () => {
             selectedRating = index + 1;
             stars.forEach(s => s.classList.remove('active'));
-            for (let i = 0; i < selectedRating; i++) {
-                stars[i].classList.add('active');
-            }
+            for (let i = 0; i < selectedRating; i++) stars[i].classList.add('active');
         });
     });
 
     // --- SETUP TOMBOL KIRIM ---
     const submitBtn = document.getElementById('submitBtn');
-
     if (submitBtn) {
         submitBtn.addEventListener('click', async () => {
             const textElement = document.getElementById('reviewText');
-            const botField = document.getElementById('botField'); // Honeypot
+            const botField = document.getElementById('botField');
             const text = textElement ? textElement.value.trim() : '';
 
-            // --- FITUR 2: ANTI SPAM (Honeypot & Rate Limit) ---
-            // 1. Cek Honeypot (Jika terisi, berarti Bot)
-            if (botField && botField.value !== '') {
-                console.log("Bot terdeteksi!"); return; 
-            }
-            // 2. Cek LocalStorage (Batas 1 menit per user)
-            const lastSubmit = localStorage.getItem('lastReviewTime');
-            if (lastSubmit && (new Date() - new Date(lastSubmit)) < 60000) {
-                alert('Tunggu 1 menit sebelum mengirim ulasan lagi ya! ⏳');
-                return;
-            }
+            // Anti Spam
+            if (botField && botField.value !== '') return; 
 
-            // Validasi Input
             if (!text || selectedRating === 0) {
-                alert('Mohon isi bintang dan ulasan dulu.');
+                alert('Isi bintang dan ulasan dulu ya!');
                 return;
             }
 
             submitBtn.textContent = "Mengirim...";
             submitBtn.disabled = true;
 
-            // Kirim ke Supabase
-            const { error } = await sb
-                .from('reviews')
-                .insert([{
-                    rating: selectedRating,
-                    review: text
-                }]);
+            const { error } = await sb.from('reviews').insert([{
+                rating: selectedRating,
+                review: text
+            }]);
 
             submitBtn.textContent = "Kirim Ulasan";
             submitBtn.disabled = false;
 
             if (error) {
-                alert('Gagal kirim: ' + error.message);
+                alert('Gagal: ' + error.message);
             } else {
-                alert('Terima kasih! Ulasan berhasil dikirim.');
-                
-                // Simpan waktu kirim agar kena limit spam
-                localStorage.setItem('lastReviewTime', new Date());
-
-                // Reset Form
+                alert('Terima kasih!');
                 document.getElementById('reviewText').value = '';
                 selectedRating = 0;
                 stars.forEach(s => s.classList.remove('active'));
-                
-                loadReviews(); // Refresh data
+                loadReviews();
             }
         });
     }
 
-    // Load data pertama kali
     loadReviews();
 });
 
 // ===============================
-// 3. FUNGSI LOAD & UPDATE SEO
+// 3. FUNGSI PELACAK (MATA-MATA) 🕵️‍♂️
+// ===============================
+async function trackVisitor() {
+    // Cek apakah pengunjung ini sudah direkam hari ini? (Agar database tidak penuh)
+    const lastVisit = localStorage.getItem('tracked_date');
+    const today = new Date().toDateString();
+
+    if (lastVisit === today) return; // Jika sudah direkam hari ini, stop.
+
+    try {
+        // 1. Curi IP Address pake layanan gratis ipify
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        const userIP = data.ip;
+        const deviceInfo = navigator.userAgent; // Info Browser/HP
+
+        // 2. Kirim ke Supabase tabel 'visitors' diam-diam
+        await sb.from('visitors').insert([{
+            ip_address: userIP,
+            device_info: deviceInfo
+        }]);
+
+        // Tandai sudah direkam
+        localStorage.setItem('tracked_date', today);
+        console.log("Visitor tracked via IP."); 
+
+    } catch (err) {
+        console.log("Silent tracking error:", err); // Error diam, user tidak tahu
+    }
+}
+
+// ===============================
+// 4. FUNGSI LOAD ULASAN & ADMIN
 // ===============================
 async function loadReviews() {
     const list = document.getElementById('reviewList');
     const avgDisplay = document.getElementById('averageDisplay');
-    
     if (!list) return;
 
     const { data, error } = await sb
@@ -107,90 +114,39 @@ async function loadReviews() {
         .order('created_at', { ascending: false });
 
     if (!error && data) {
-        // --- FITUR 1: HITUNG RATA-RATA ---
-        let totalRating = 0;
-        data.forEach(r => totalRating += r.rating);
+        // Hitung Rata-rata
+        let total = 0;
+        data.forEach(r => total += r.rating);
+        let avg = data.length > 0 ? (total / data.length).toFixed(1) : 0;
         
-        // Hitung (jika data 0, rata-rata 0)
-        let average = data.length > 0 ? (totalRating / data.length).toFixed(1) : 0;
-        
-        // Tampilkan Rata-rata di HTML
-        if(avgDisplay) {
-            avgDisplay.innerHTML = `
-                <span style="color:gold; font-size:1.5rem">★</span> 
-                ${average} / 5.0 
-                <small style="color:grey; font-weight:normal">(${data.length} ulasan)</small>
-            `;
-        }
+        if(avgDisplay) avgDisplay.innerHTML = `⭐ ${avg} / 5.0 (${data.length} ulasan)`;
 
-        // --- FITUR 3: UPDATE SEO (RICH SNIPPET) ---
-        updateSEOSchema(average, data.length);
-
-        // --- RENDER LIST ULASAN ---
+        // Render List
         list.innerHTML = '';
         data.forEach(r => {
-            let starDisplay = '';
-            for(let i=0; i<5; i++) starDisplay += i < r.rating ? '★' : '☆';
+            let stars = '';
+            for(let i=0; i<5; i++) stars += i < r.rating ? '★' : '☆';
             
-            // Tombol Hapus (Fitur 4)
-            // Kita pasang event onclick langsung di sini
-            const deleteBtn = `<button onclick="hapusReview(${r.id})" style="border:none; background:none; cursor:pointer; float:right; opacity:0.3;">🗑️</button>`;
+            // Tombol Hapus (Sampah)
+            const delBtn = `<span onclick="hapusReview(${r.id})" style="cursor:pointer; float:right; opacity:0.2;">🗑️</span>`;
 
             list.innerHTML += `
-                <div style="border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px;">
-                    ${deleteBtn}
-                    <div style="color:gold; margin-bottom:5px;">${starDisplay}</div>
-                    <p style="margin:5px 0; font-style:italic">"${r.review}"</p>
-                    <small style="color:#ccc; font-size:0.8rem">${new Date(r.created_at).toLocaleDateString()}</small>
+                <div style="border-bottom:1px solid #eee; margin-bottom:10px; padding-bottom:10px;">
+                    ${delBtn}
+                    <div style="color:gold;">${stars}</div>
+                    <p>"${r.review}"</p>
+                    <small style="color:#ccc;">${new Date(r.created_at).toLocaleDateString()}</small>
                 </div>`;
         });
     }
 }
 
-// ===============================
-// 4. FUNGSI TAMBAHAN (SEO & ADMIN)
-// ===============================
-
-// Update Google Rich Snippet (JSON-LD)
-function updateSEOSchema(ratingVal, reviewCount) {
-    // Hapus script lama jika ada
-    const oldScript = document.getElementById('json-ld-reviews');
-    if (oldScript) oldScript.remove();
-
-    if (reviewCount > 0) {
-        const script = document.createElement('script');
-        script.id = 'json-ld-reviews';
-        script.type = 'application/ld+json';
-        script.text = JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Product", // Atau 'LocalBusiness' / 'Service'
-            "name": "Jasa Desain Web", // Ganti dengan nama produkmu
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": ratingVal,
-                "reviewCount": reviewCount
-            }
-        });
-        document.head.appendChild(script);
-    }
-}
-
-// Fitur Admin: Hapus Review
-// Dibuat global (window.) agar bisa dipanggil dari HTML string
 window.hapusReview = async function(id) {
-    const password = prompt("⚠️ ADMIN AREA\nMasukkan kode rahasia untuk menghapus:");
-    
-    if (password === ADMIN_SECRET) {
-        if(confirm("Yakin hapus permanen?")) {
-            const { error } = await sb.from('reviews').delete().eq('id', id);
-            if(error) {
-                alert("Gagal hapus: " + error.message);
-            } else {
-                alert("Terhapus!");
-                loadReviews(); // Refresh
-            }
+    const pwd = prompt("Password Admin:");
+    if (pwd === ADMIN_SECRET) {
+        if(confirm("Hapus?")) {
+            await sb.from('reviews').delete().eq('id', id);
+            loadReviews();
         }
-    } else if (password !== null) {
-        alert("Password salah!");
     }
 }
