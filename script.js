@@ -3,7 +3,6 @@
 // ===============================
 // Hati-hati: Gunakan tanda sama dengan (=) dan tanda petik ('...')
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
-
 // GANTI TEXT DI BAWAH DENGAN KODE "ANON PUBLIC" PANJANG DARI DASHBOARD
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' 
 
