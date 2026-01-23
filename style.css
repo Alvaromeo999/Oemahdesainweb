@@ -20,3 +20,14 @@ textarea {
   width: 100%;
   height: 80px;
 }
+
+
+.stars span:hover,
+.stars span.active {
+  color: gold;
+  transform: scale(1.2);
+}
+
+.stars span {
+  transition: 0.2s;
+}
