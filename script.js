@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SETUP BINTANG ---
     let selectedRating = 0;
     const stars = document.querySelectorAll('.stars span');
-
     stars.forEach((star, index) => {
         star.addEventListener('click', () => {
             selectedRating = index + 1;
