@@ -23,3 +23,6 @@ document.querySelectorAll('.stars span').forEach((star, index) => {
 // ===============================
 // SUBMIT REVIEW
 // =====================
+
+// expose function ke global supaya bisa dipanggil dari HTML
+window.submitReview = submitReview
