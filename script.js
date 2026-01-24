@@ -4,10 +4,10 @@
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
 
 // ⚠️ PASTE API KEY "ANON PUBLIC" DI SINI
-const supabaseKey = 'const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3M...'' 
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0' 
 
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
-const ADMIN_SECRET = "OemahDesainWeb2026"; 
+const ADMIN_SECRET = "12345"; 
 
 // ==========================================
 // 2. LOGIKA UTAMA WEBSITE
@@ -111,7 +111,7 @@ async function loadReviews() {
         data.forEach(r => {
             let stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
             list.innerHTML += `
-                <div style="border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px;">
+                <div style="border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px; text-align: left;">
                     <span onclick="hapusReview(${r.id})" style="float:right; cursor:pointer; opacity:0.3;">🗑️</span>
                     <div style="color:#f39c12; font-size:1.2rem;">${stars}</div>
                     <p>"${r.review}"</p>
@@ -141,7 +141,7 @@ async function countVisitors() {
 
 // --- FUNGSI ADMIN ---
 window.hapusReview = async function(id) {
-    const pwd = prompt("khusus_admin_yang_bisa");
+    const pwd = prompt("Masukkan Password Admin:");
     if(pwd === ADMIN_SECRET) {
         if(confirm("Yakin hapus?")) {
             await sb.from('reviews').delete().eq('id', id);
