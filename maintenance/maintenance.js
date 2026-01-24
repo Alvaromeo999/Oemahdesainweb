@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const isAdmin = params.get("admin") === "true";
 
+if (isAdmin) {
+  localStorage.setItem("odw_admin", "true");
+}
+
+const adminSaved = localStorage.getItem("odw_admin") === "true";
+
+if (!MAINTENANCE_MODE || isAdmin || adminSaved) {
+  return;
+}
+
+
+   
   // kalau admin, website normal
   if (!MAINTENANCE_MODE || isAdmin) {
     return;
