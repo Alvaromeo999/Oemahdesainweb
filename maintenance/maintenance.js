@@ -1,3 +1,6 @@
+if (window.__maintenanceLoaded) return;
+window.__maintenanceLoaded = true;
+
 const MAINTENANCE_MODE = true;
 const ADMIN_PASSWORD = "admin123";
 
