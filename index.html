@@ -181,46 +181,9 @@
 <body>
 
     <header>
-                <style>
-  /* 1. KOTAK UTAMA (NAVBAR) */
-  .header-sticky {
-    position: fixed;        /* KUNCI: Agar menempel saat scroll */
-    top: 0;
-    left: 0;
-    width: 100%;            /* Lebar penuh */
-    height: 80px;           /* Tinggi kop */
-    background-color: white; /* Warna latar putih */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Efek bayangan halus di bawah */
-    display: flex;          /* Mode tata letak fleksibel */
-    justify-content: space-between; /* Jarak otomatis: Logo Kiri, Tombol Kanan */
-    align-items: center;    /* Posisi vertikal di tengah */
-    padding: 0 5%;          /* Jarak aman kiri & kanan */
-    z-index: 9999;          /* Pastikan selalu di atas elemen lain */
-    box-sizing: border-box; /* Agar padding tidak merusak lebar */
-  }
-
-  /* 2. TOMBOL PESAN SEKARANG (Gaya Khusus Header) */
-  .btn-header {
-    background-color: #f39c12; /* Warna Oranye */
-    color: white;
-    padding: 10px 25px;
-    border-radius: 50px;       /* Sudut bulat */
-    text-decoration: none;
-    font-weight: bold;
-    font-family: sans-serif;
-    transition: background 0.3s;
-  }
-  .btn-header:hover {
-    background-color: #e67e22; /* Warna saat disentuh mouse */
-  }
-
-  /* 3. JARAK KONTEN BAWAH (PENTING!) */
-  /* Karena header melayang, konten di bawahnya akan tertutup. */
-  /* Kita beri jarak padding di body */
-  body {
-    padding-top: 100px; /* Sesuaikan agar judul tidak ketutupan header */
-  }
-</style>
+        <div class="container nav-flex">
+<img src="./assets/img/logo_kita.png" alt="Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+OemahDesainWeb
             <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20buat%20website" class="btn btn-cta">Pesan Sekarang</a>
         </div>
     </header>
