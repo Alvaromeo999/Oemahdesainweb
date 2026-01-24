@@ -1,21 +1,15 @@
 const MAINTENANCE_MODE = true;
-const ADMIN_PASSWORD = "odw123";
+const ADMIN_PASSWORD = "admin123"; // ganti sesuai keinginan
 
-function loginAdmin() {
-  const input = prompt("Masukkan password admin:");
-  if (input === ADMIN_PASSWORD) {
+function adminLogin() {
+  const pass = prompt("Masukkan password admin:");
+  if (pass === ADMIN_PASSWORD) {
     localStorage.setItem("odw_admin", "true");
-    alert("Login admin berhasil");
+    alert("Login berhasil");
     location.reload();
   } else {
     alert("Password salah");
   }
-}
-
-function logoutAdmin() {
-  localStorage.removeItem("odw_admin");
-  alert("Logout admin");
-  location.reload();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,24 +19,34 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!MAINTENANCE_MODE || isAdmin) return;
 
   const overlay = document.createElement("div");
+  overlay.id = "maintenanceOverlay";
+  overlay.style.cssText = `
+    position:fixed;
+    inset:0;
+    background:#111;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+  `;
+
   overlay.innerHTML = `
-    <div style="
-      position:fixed;
-      inset:0;
-      background:#111;
-      color:#fff;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
-    ">
-      <div>
-        <h1>🚧 Under Construction</h1>
-        <p>Website sedang maintenance</p>
-        <button onclick="loginAdmin()">Admin Login</button>
-      </div>
+    <div style="text-align:center">
+      <h1>🚧 Under Construction</h1>
+      <p>Website sedang maintenance</p>
+      <button onclick="adminLogin()"
+        style="
+          padding:10px 20px;
+          cursor:pointer;
+          border:none;
+          border-radius:5px;
+        ">
+        🔐 Admin Login
+      </button>
     </div>
   `;
 
   document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
 });
