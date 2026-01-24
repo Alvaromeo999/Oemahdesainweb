@@ -7,14 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // cek admin via URL
   const params = new URLSearchParams(window.location.search);
-  const isAdmin = params.get("admin") === "false
-";
+  const isAdmin = params.get("admin") === "false";
 
 if (isAdmin) {
-  localStorage.setItem("odw_admin", "true");
+  localStorage.setItem("odw_admin", "false");
 }
 
-const adminSaved = localStorage.getItem("odw_admin") === "true";
+const adminSaved = localStorage.getItem("odw_admin") === "false";
 
 if (!MAINTENANCE_MODE || isAdmin || adminSaved) {
   return;
