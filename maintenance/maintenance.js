@@ -1,32 +1,48 @@
-const MAINTENANCE_MODE = true; // true = ON, false = OFF
+const MAINTENANCE_MODE = true;
+const ADMIN_PASSWORD = "odw123";
+
+function loginAdmin() {
+  const input = prompt("Masukkan password admin:");
+  if (input === ADMIN_PASSWORD) {
+    localStorage.setItem("odw_admin", "true");
+    alert("Login admin berhasil");
+    location.reload();
+  } else {
+    alert("Password salah");
+  }
+}
+
+function logoutAdmin() {
+  localStorage.removeItem("odw_admin");
+  alert("Logout admin");
+  location.reload();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const params = new URLSearchParams(window.location.search);
-  const isAdmin = params.get("admin") === "true";
+  const isAdmin = localStorage.getItem("odw_admin") === "true";
 
-  if (isAdmin) {
-    localStorage.setItem("odw_admin", "true");
-  }
+  if (!MAINTENANCE_MODE || isAdmin) return;
 
-  const adminSaved = localStorage.getItem("odw_admin") === "true";
-
-  // jika maintenance OFF atau admin → normal
-  if (!MAINTENANCE_MODE || isAdmin || adminSaved) return;
-
-  // tampilkan overlay maintenance
   const overlay = document.createElement("div");
-  overlay.id = "maintenanceOverlay";
-  overlay.classList.add("active");
-
   overlay.innerHTML = `
-    <div class="maintenance-box">
-      <img src="maintenance/laptop-under-construction.png">
-      <h1>🚧 Lagi Diperbaiki Dulu Ya</h1>
-      <p>Website sedang maintenance 🚀</p>
+    <div style="
+      position:fixed;
+      inset:0;
+      background:#111;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    ">
+      <div>
+        <h1>🚧 Under Construction</h1>
+        <p>Website sedang maintenance</p>
+        <button onclick="loginAdmin()">Admin Login</button>
+      </div>
     </div>
   `;
 
   document.body.appendChild(overlay);
-  document.body.style.overflow = "hidden";
 });
