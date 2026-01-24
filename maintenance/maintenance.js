@@ -1,20 +1,24 @@
 const MAINTENANCE_MODE = true;
-const ADMIN_PASSWORD = "admin123"; // ganti sesuai keinginan
+const ADMIN_PASSWORD = "admin123";
 
-function adminLogin() {
+window.adminLogin = function () {
   const pass = prompt("Masukkan password admin:");
+  console.log("Password input:", pass);
+
   if (pass === ADMIN_PASSWORD) {
     localStorage.setItem("odw_admin", "true");
+    console.log("Admin saved:", localStorage.getItem("odw_admin"));
     alert("Login berhasil");
     location.reload();
   } else {
     alert("Password salah");
   }
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
 
   const isAdmin = localStorage.getItem("odw_admin") === "true";
+  console.log("Is admin?", isAdmin);
 
   if (!MAINTENANCE_MODE || isAdmin) return;
 
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div style="text-align:center">
       <h1>🚧 Under Construction</h1>
       <p>Website sedang maintenance</p>
-      <button onclick="adminLogin()"
+      <button id="adminBtn"
         style="
           padding:10px 20px;
           cursor:pointer;
@@ -49,4 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.body.appendChild(overlay);
   document.body.style.overflow = "hidden";
+
+  // event listener (lebih aman dari inline onclick)
+  document.getElementById("adminBtn")
+    .addEventListener("click", adminLogin);
 });
