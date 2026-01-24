@@ -4,7 +4,7 @@
 const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
 
 // ⚠️ PASTE API KEY "ANON PUBLIC" DI SINI
-const supabaseKey = 'PASTE_KODE_ANON_PUBLIC_DISINI' 
+const supabaseKey = 'const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3M...'' 
 
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
 const ADMIN_SECRET = "12345"; 
