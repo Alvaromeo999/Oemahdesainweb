@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // cek admin via URL
   const params = new URLSearchParams(window.location.search);
-  const isAdmin = params.get("admin") === "true";
+  const isAdmin = params.get("admin") === "false
+";
 
 if (isAdmin) {
   localStorage.setItem("odw_admin", "true");
