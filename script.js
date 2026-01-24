@@ -7,7 +7,7 @@ const supabaseUrl = 'https://tosjjicxibibuxpskpjz.supabase.co'
 const supabaseKey = 'const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3M...'' 
 
 const sb = supabase.createClient(supabaseUrl, supabaseKey)
-const ADMIN_SECRET = "12345"; 
+const ADMIN_SECRET = "OemahDesainWeb2026"; 
 
 // ==========================================
 // 2. LOGIKA UTAMA WEBSITE
@@ -141,7 +141,7 @@ async function countVisitors() {
 
 // --- FUNGSI ADMIN ---
 window.hapusReview = async function(id) {
-    const pwd = prompt("Oemahdesainweb2026:");
+    const pwd = prompt("khusus_admin_yang_bisa");
     if(pwd === ADMIN_SECRET) {
         if(confirm("Yakin hapus?")) {
             await sb.from('reviews').delete().eq('id', id);
