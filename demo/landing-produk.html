@@ -1,1 +1,58 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Produk Viral - Oemah Desain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: sans-serif; margin: 0; background: #fdfdfd; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; }
+        
+        .hero { background: #ff9f43; padding: 40px 20px; text-align: center; color: white; }
+        .hero h1 { font-size: 2.2rem; margin: 0; text-transform: uppercase; border-bottom: 3px dashed white; display: inline-block; padding-bottom: 10px; }
+        
+        .product-img { width: 100%; height: auto; display: block; }
+        
+        .offer { padding: 30px 20px; text-align: center; background: #fff2cc; }
+        .price-coret { text-decoration: line-through; color: #888; }
+        .price-now { font-size: 2.5rem; color: #e74c3c; font-weight: bold; }
+        
+        .cta-btn { background: #2ecc71; color: white; padding: 20px; display: block; text-align: center; font-size: 1.5rem; font-weight: bold; text-decoration: none; border-radius: 10px; animation: pulse 1.5s infinite; box-shadow: 0 5px 0 #27ae60; margin: 20px 0; }
+        
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        
+        .demo-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #333; color: white; padding: 10px; text-align: center; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Promo Hari Ini!</h1>
+            <p>Solusi Terbaik untuk Masalah Anda</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Produk" class="product-img">
+        
+        <div class="offer">
+            <h3>Smartwatch Tahan Air Gen-Z</h3>
+            <p>Stok Tersisa: <strong style="color:red">3 Pcs</strong> Lagi!</p>
+            <div class="price-coret">Rp 500.000</div>
+            <div class="price-now">Rp 199.000</div>
+            
+            <a href="#" class="cta-btn"><i class="fab fa-whatsapp"></i> BELI SEKARANG</a>
+            <p><small>*Garansi uang kembali 100%</small></p>
+        </div>
+        
+        <div style="padding: 20px; line-height: 1.6;">
+            <h3>Kenapa Harus Beli?</h3>
+            <ul>
+                <li>✅ Baterai tahan 7 hari</li>
+                <li>✅ Anti air & debu</li>
+                <li>✅ Bisa connect Android & iOS</li>
+            </ul>
+        </div>
+        <div style="height: 50px;"></div>
+    </div>
+    <div class="demo-bar">Demo Landing Page Produk (Sales Page). Dibuat oleh Oemah Desain.</div>
+</body>
+</html>
