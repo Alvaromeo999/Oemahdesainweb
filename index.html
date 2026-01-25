@@ -86,7 +86,6 @@
             <p style="margin-bottom: 40px;">Pilih template premium yang paling sesuai dengan karakter bisnis Anda.</p>
             
             <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                
                 <div class="card" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Travel" style="width: 100%; height: 200px; object-fit: cover;">
                     <div class="card-body" style="padding: 20px;">
@@ -122,9 +121,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-            </div> <br>
-            <section id="real-project" class="section" style="background: #fffbf0; padding: 60px 0;">
+    <section id="real-project" class="section" style="background: #fffbf0; padding: 60px 0;">
         <div class="container">
             <h2 class="text-center">Studi Kasus: Bukti Nyata</h2>
             <p class="text-center" style="margin-bottom: 40px;">Bukan sekadar desain, ini adalah website yang benar-benar membantu bisnis klien kami.</p>
@@ -140,38 +141,20 @@
                     <a href="./portfolio/toko-sembako.html" class="btn" style="margin-top: 10px; display: inline-block; color: #f39c12; font-weight: bold;">Baca Studi Kasus &rarr;</a>
                 </div>
 
-               <div class="card" style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
+                <div class="card" style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
                     <div style="height: 200px; background: #ddd; border-radius: 5px; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sekolah" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sekolah" style="width:100%; height:100%; object-fit:cover;">
                     </div>
                     <h3 style="margin-top: 15px;">SMK Bina Mandiri</h3>
                     <p style="font-size: 0.9rem; color: #666;">Website resmi instansi pendidikan dengan fitur PPDB Online.</p>
                     <a href="./portfolio/website-sekolah.html" class="btn" style="margin-top: 10px; display: inline-block; color: #007bff; font-weight: bold;">Baca Studi Kasus &rarr;</a>
                 </div>
-              
-            </div>
-        </div>
-<section id="harga" class="section pricing">
-        <div class="container text-center">
-            <h2>Pilihan Paket Konstruksi Digital</h2>
-            <div class="pricing-grid">
-                <div class="price-card"> ... </div>
-                
-                <div class="price-card popular"> ... </div>
+
             </div>
         </div>
     </section>
-    ```
 
-Setelah blok di atas dihapus, pastikan yang tersisa hanyalah blok harga yang **BENAR** di bawahnya (yang memiliki **3 Paket** dan tombol **"Lihat Detail"**).
-
----
-
-Silakan lakukan kedua perbaikan tersebut, lalu **Commit changes** lagi. Jangan lupa lakukan **Hard Refresh** (`Ctrl + F5` atau `Cmd + Shift + R`) di website live Anda untuk melihat hasilnya.
-
-Semangat, Pak! Tinggal sedikit lagi!
-
-<section id="harga" class="section pricing">
+    <section id="harga" class="section pricing">
         <div class="container text-center">
             <h2>Pilihan Paket Konstruksi Digital</h2>
             <div class="pricing-grid">
@@ -215,11 +198,9 @@ Semangat, Pak! Tinggal sedikit lagi!
                     </ul>
                     <a href="./jasa/Kode3.html" class="btn btn-outline">Lihat Detail</a>
                 </div>
-
             </div>
         </div>
     </section>
-  
 
     <section id="social-proof" class="section">
       <div class="container">
@@ -268,25 +249,18 @@ Semangat, Pak! Tinggal sedikit lagi!
         <div class="container">
             <h2>Ulasan Pelanggan</h2>
             <div id="averageDisplay" style="margin-bottom: 20px; font-weight: bold; font-size: 1.2rem;"></div>
-
             <div class="review-section" style="max-width: 600px; margin: 0 auto;">
                 <div class="stars" style="color: #f39c12; font-size: 1.5rem; margin-bottom: 10px;">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
-
                 <textarea id="reviewText" placeholder="Tulis pengalaman Anda menggunakan jasa kami..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; min-height: 100px;"></textarea>
-                
                 <input type="text" id="botField" style="display:none !important" tabindex="-1" autocomplete="off">
-                            
                 <br>
                 <button id="submitBtn" type="button" class="btn-primary" style="margin-top: 15px; cursor: pointer;">Kirim Ulasan</button>
-                
                 <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
                     👁 Pengunjung hari ini: <span id="visitorCount">Loading...</span>
                 </p>
-
-                <div id="reviewList" style="margin-top: 30px; text-align: left;">
-                    </div>
+                <div id="reviewList" style="margin-top: 30px; text-align: left;"></div>
             </div>
         </div>
     </section>
