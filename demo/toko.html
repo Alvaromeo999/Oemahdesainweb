@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Template - Mega Store</title>
+    <style>
+        /* Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { color: #333; background-color: #f4f6f8; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Navbar */
+        nav { background: #0984e3; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .search-bar { background: white; padding: 8px 15px; border-radius: 4px; width: 40%; color: #888; }
+
+        /* Hero */
+        header { 
+            height: 350px; 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+        }
+        .btn-shop { background: #00cec9; color: white; padding: 10px 25px; border-radius: 4px; font-weight: bold; margin-top: 15px; display: inline-block; }
+
+        /* Products */
+        .products { padding: 40px 5%; }
+        .products h2 { margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .product-card { background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; }
+        .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 10px; }
+        .price { color: #d63031; font-weight: bold; font-size: 1.1rem; }
+
+        /* Demo Bar */
+        .demo-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: #fff; border-top: 1px solid #ddd;
+            padding: 15px; display: flex; justify-content: space-between; align-items: center; z-index: 100;
+        }
+        .btn-buy { background: #25d366; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MegaStore</div>
+        <div class="search-bar"><i class="fas fa-search"></i> Cari produk...</div>
+    </nav>
+
+    <header>
+        <div>
+            <h1 style="font-size: 2.5rem;">Diskon Akhir Tahun up to 70%</h1>
+            <a href="#" class="btn-shop">Belanja Sekarang</a>
+        </div>
+    </header>
+
+    <section class="products">
+        <h2>Produk Terlaris</h2>
+        <div class="grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sepatu">
+                <h3>Nike Sneaker</h3>
+                <div class="price">Rp 1.200.000</div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Jam">
+                <h3>Smart Watch</h3>
+                <div class="price">Rp 850.000</div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Headphone">
+                <h3>Headphone Pro</h3>
+                <div class="price">Rp 450.000</div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Kacamata">
+                <h3>Sun Glasses</h3>
+                <div class="price">Rp 150.000</div>
+            </div>
+        </div>
+    </section>
+
+    <div style="height: 60px;"></div> <div class="demo-bar">
+        <div class="demo-info"><strong>Demo Toko Online.</strong> Mau punya toko seperti ini?</div>
+        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20desain%20Toko%20Online" class="btn-buy"><i class="fab fa-whatsapp"></i> Pesan</a>
+    </div>
+
+</body>
+</html>
