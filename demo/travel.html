@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Template - Adventure Pro</title>
+    <style>
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Navbar */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; position: absolute; width: 100%; z-index: 10; color: white; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .nav-links a { margin-left: 20px; font-weight: 500; }
+        .btn-nav { background: #f39c12; padding: 10px 20px; border-radius: 5px; color: white; }
+
+        /* Hero Section */
+        header { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; 
+            background-position: center;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            padding: 0 20px;
+        }
+        header h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; }
+        .btn-main { background: #f39c12; color: white; padding: 15px 30px; font-size: 1.1rem; border-radius: 50px; transition: 0.3s; }
+        .btn-main:hover { transform: scale(1.05); }
+
+        /* Features */
+        .features { padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center; }
+        .feature-item i { font-size: 2.5rem; color: #f39c12; margin-bottom: 15px; }
+        
+        /* Gallery */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; padding: 10px; }
+        .gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
+
+        /* Footer */
+        footer { background: #222; color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+
+        /* Banner Demo (Penting untuk jualan) */
+        .demo-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: #fff; border-top: 1px solid #ddd;
+            padding: 15px; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 100;
+        }
+        .demo-info { font-size: 0.9rem; }
+        .btn-buy { background: #25d366; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AdventurePro</div>
+        <div class="nav-links">
+            <a href="#">Paket Tour</a>
+            <a href="#">Gallery</a>
+            <a href="#" class="btn-nav">Kontak</a>
+        </div>
+    </nav>
+
+    <header>
+        <div>
+            <h1>Jelajahi Dunia Bersama Kami</h1>
+            <p>Solusi perjalanan terbaik untuk pengalaman tak terlupakan. Hemat, Aman, dan Menyenangkan.</p>
+            <a href="#" class="btn-main">Lihat Paket Wisata</a>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-item">
+            <i class="fas fa-plane"></i>
+            <h3>Tiket Murah</h3>
+            <p>Dapatkan penawaran tiket pesawat termurah ke seluruh dunia.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-hotel"></i>
+            <h3>Hotel Nyaman</h3>
+            <p>Kerjasama dengan hotel bintang 5 untuk kenyamanan Anda.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <h3>Guide Lokal</h3>
+            <p>Pemandu wisata berpengalaman yang siap menemani perjalanan.</p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trip 1">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trip 2">
+        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trip 3">
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Contoh Website Travel. Dibuat oleh Oemah Desain Web.</p>
+    </footer>
+
+    <div class="demo-bar">
+        <div class="demo-info">
+            <strong>Ini adalah Halaman Demo.</strong> Suka dengan desain ini?
+        </div>
+        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20mau%20pesan%20desain%20Travel%20seperti%20demo" class="btn-buy">
+            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+        </a>
+    </div>
+
+</body>
+</html>
