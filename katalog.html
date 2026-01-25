@@ -54,22 +54,36 @@
         .back-link { display: inline-block; margin: 40px 0; color: #666; text-decoration: none; font-weight: 600; }
         .back-link:hover { color: var(--primary); }
 
-        /* === STYLE KHUSUS SEO CONTENT (BARU DITAMBAHKAN) === */
+       /* === STYLE KHUSUS SEO CONTENT (DIPERCANTIK) === */
         #seo-content {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid #e2e8f0; /* Garis pemisah tipis */
+            margin-top: 80px;
+            padding: 50px;
+            background: #ffffff; /* Beri background putih */
+            border-radius: 20px; /* Sudut membulat */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* Bayangan halus */
             color: #475569;
-            text-align: left; /* Rata kiri agar enak dibaca */
+            text-align: left;
+            border: 1px solid #f1f5f9;
         }
-        #seo-content h1, #seo-content h2, #seo-content h3 { color: #1e293b; margin-top: 30px; margin-bottom: 15px; }
-        #seo-content h1 { font-size: 1.8rem; color: var(--primary); text-align: center; } /* Judul utama tengah */
-        #seo-content h2 { font-size: 1.4rem; border-left: 4px solid var(--accent); padding-left: 10px; } /* Gaya heading */
-        #seo-content h3 { font-size: 1.1rem; font-weight: 600; }
-        #seo-content p { margin-bottom: 15px; line-height: 1.7; font-size: 0.95rem; }
-        #seo-content ul { margin-bottom: 20px; padding-left: 20px; }
-        #seo-content li { margin-bottom: 8px; list-style-type: disc; }
-
+        #seo-content h1 { 
+            font-size: 2rem; 
+            color: var(--primary); 
+            text-align: center; 
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eff6ff;
+            padding-bottom: 20px;
+        }
+        #seo-content h2 { 
+            font-size: 1.5rem; 
+            color: #1e293b;
+            border-left: 5px solid var(--accent); 
+            padding-left: 15px; 
+            margin-top: 40px;
+        }
+        #seo-content h3 { font-size: 1.2rem; color: #334155; margin-top: 25px; }
+        #seo-content p { margin-bottom: 15px; line-height: 1.8; font-size: 1rem; }
+        #seo-content ul { background: #f8fafc; padding: 20px 20px 20px 40px; border-radius: 10px; }
+        #seo-content li { margin-bottom: 10px; color: #334155; }
         @media (max-width: 600px) {
             h1 { font-size: 1.5rem; }
         }
