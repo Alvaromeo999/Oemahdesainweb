@@ -1,160 +1,176 @@
-# 🏡 Oemah Desain Website
+# Struktur Kode HTML – Oemah Desain Website
 
-> **Website bukan sekadar tampilan. Ini adalah rumah digital.**
+Dokumen ini menjelaskan **struktur HTML paling masuk akal, rapi, dan scalable** untuk website jasa seperti Oemah Desain Website.
 
----
+Fokus utama:
 
-## 📌 Tentang Oemah
-
-**Oemah Desain Website** lahir bukan dari ide instan, tapi dari proses panjang, trial-error, kegagalan, dan pembelajaran nyata di dunia bisnis digital.
-
-Kami percaya:
-
-* Website = **rumah**
-* Brand = **tuan rumah**
-* Pengunjung & klien = **tamu**
-
-Maka website tidak boleh asal jadi.
-Ia harus **kokoh, nyaman, mengayomi, dan bernilai**.
+* Mudah dipindahkan / dikembangkan
+* SEO-friendly
+* Enak dibaca developer lain
+* Siap tumbuh (bukan sekali jadi)
 
 ---
 
-## 🧠 Mindset Dasar: Membangun Rumah, Bukan Lapak
+## 🌳 Struktur Folder Final (Direkomendasikan)
 
-Dalam filosofi Jawa dikenal istilah:
-
-> **"Prasasat Pagere Wesi"**
-
-Rumah yang baik bahkan tanpa pagar pun membuat orang sungkan, karena:
-
-* Pemiliknya peduli
-* Lingkungannya terawat
-* Ada nilai yang dijaga
-
-Begitu pula website.
-
-Kami membangun website agar:
-
-* Tidak memaksa menjual
-* Tidak menipu visual
-* Tidak hanya ramai, tapi **dipercaya**
-
----
-
-## 🧱 Alur Berpikir (Step-by-Step)
-
-Website di Oemah dibangun dengan urutan yang jelas:
-
-### 1️⃣ Pondasi
-
-* Tujuan bisnis
-* Target klien
-* Nilai & positioning
-
-### 2️⃣ Cerita
-
-* Homepage sebagai pintu masuk
-* About sebagai pembangun trust
-* Services sebagai penjelas logika
-
-### 3️⃣ Bukti
-
-* Portfolio
-* Studi kasus
-* Hasil nyata, bukan janji
-
-### 4️⃣ Kenyamanan
-
-* Mobile-friendly
-* Navigasi jelas
-* Copywriting tenang
-
-### 5️⃣ Penutup (Closing Alami)
-
-* CTA tanpa tekanan
-* Komunikasi terbuka
-* Klien datang dengan sadar
+```
+root/
+│
+├─ index.html              # Homepage (jualan utama)
+├─ about.html              # Filosofi, cerita, trust builder
+├─ services.html           # Layanan & paket
+├─ portfolio.html          # Demo / hasil kerja
+├─ contact.html            # Kontak & CTA
+│
+├─ assets/
+│   ├─ css/
+│   │   └─ style.css       # Global styling
+│   │
+│   ├─ js/
+│   │   └─ script.js       # Logic, interaksi, Supabase
+│   │
+│   ├─ img/
+│   │   ├─ hero/
+│   │   ├─ portfolio/
+│   │   └─ icons/
+│   │
+│   └─ fonts/              # Jika pakai font lokal
+│
+├─ README.md               # Filosofi & mindset (trust asset)
+└─ sitemap.xml             # SEO
+```
 
 ---
 
-## 🎯 Tujuan Akhir Website
+## 🧱 Struktur HTML (Per Halaman)
 
-Website bukan sekadar online.
-Website harus:
+### 1️⃣ Global Layout (Semua Halaman)
 
-* Mendatangkan pekerjaan
-* Menyaring klien yang tepat
-* Bekerja otomatis 24/7
-* Membantu pemiliknya hidup lebih tertata
+Urutan wajib:
 
-Jika website hanya indah tapi tidak bekerja,
-itu **rumah kosong**.
+1. `<header>` – navigasi & branding
+2. `<main>` – konten utama (SEO fokus)
+3. `<footer>` – trust & penutup
 
----
-
-## 🤝 Untuk Siapa Oemah?
-
-Kami cocok untuk:
-
-* UMKM yang ingin naik kelas
-* Personal brand
-* Profesional jasa
-* Bisnis yang ingin jangka panjang
-
-❌ Tidak cocok untuk:
-
-* Yang ingin instan
-* Yang hanya ikut tren
-* Yang mengejar murah tanpa nilai
+```html
+<body>
+  <header></header>
+  <main></main>
+  <footer></footer>
+</body>
+```
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## 🏠 index.html (Homepage)
 
-* HTML5 (struktur & cerita)
-* CSS3 (rasa & emosi)
-* JavaScript (interaksi seperlunya)
-* SEO on-page berorientasi manusia
+Tujuan: **closing & trust**
 
-Tanpa framework berlebihan.
-Cepat, ringan, dan mudah dirawat.
+Urutan section:
 
----
+1. Hero (value proposition)
+2. Masalah klien (pain)
+3. Solusi & keunggulan
+4. Layanan / paket
+5. Portfolio / demo
+6. Testimoni
+7. FAQ
+8. CTA final
 
-## 📂 Struktur Project
-
-Struktur folder dibuat agar:
-
-* Mudah dipindah
-* Mudah dikembangkan
-* Mudah dipahami developer lain
-
-(Setiap folder punya peran jelas, tidak asal campur)
-
----
-
-## 🌱 Nilai Tambah & Kepedulian
-
-Oemah tidak hanya fokus jualan.
-Kami percaya bisnis yang langgeng harus:
-
-* Memberi manfaat
-* Mengedukasi
-* Mengayomi ekosistem
-
-Website adalah alat.
-Nilai manusialah yang membuatnya hidup.
+```html
+<main>
+  <section id="hero"></section>
+  <section id="pain"></section>
+  <section id="solution"></section>
+  <section id="pricing"></section>
+  <section id="portfolio"></section>
+  <section id="reviews"></section>
+  <section id="faq"></section>
+  <section id="cta"></section>
+</main>
+```
 
 ---
 
-## 📞 Kontak & Kolaborasi
+## 🧠 about.html
 
-Jika Anda mencari website yang:
+Tujuan: **trust & cerita**
 
-* Tidak kaleng-kaleng
-* Dibangun dengan akal sehat
-* Fokus hasil & keberlanjutan
+Isi utama:
 
-Selamat datang di Oemah.
+* Filosofi Oemah
+* Proses berpikir
+* Nilai & prinsip
 
-> **Rumah yang baik membuat tamu betah, dan tuan rumah sejahtera.**
+```html
+<main>
+  <section id="about-hero"></section>
+  <section id="philosophy"></section>
+  <section id="process"></section>
+  <section id="values"></section>
+</main>
+```
+
+---
+
+## 🧰 services.html
+
+Tujuan: **jelas & rasional**
+
+```html
+<main>
+  <section id="services"></section>
+  <section id="packages"></section>
+  <section id="comparison"></section>
+</main>
+```
+
+---
+
+## 🎨 portfolio.html
+
+Tujuan: **bukti nyata**
+
+```html
+<main>
+  <section id="portfolio-list"></section>
+</main>
+```
+
+---
+
+## 📞 contact.html
+
+Tujuan: **aksi cepat**
+
+```html
+<main>
+  <section id="contact-form"></section>
+  <section id="contact-info"></section>
+</main>
+```
+
+---
+
+## ⚙️ Catatan Teknis Penting
+
+* **1 halaman = 1 file HTML** (mudah SEO)
+* Jangan campur logic di HTML
+* Semua JS via `assets/js/script.js`
+* Semua styling global di `style.css`
+
+---
+
+## ✅ Checklist Struktur Siap Deploy
+
+* [x] Folder rapi
+* [x] Penamaan konsisten
+* [x] SEO-friendly
+* [x] Mudah dikembangkan
+* [x] Siap untuk klien besar
+
+---
+
+> **Website yang rapi di struktur = bisnis yang rapi di masa depan.**
+
+© Oemah Desain Website
