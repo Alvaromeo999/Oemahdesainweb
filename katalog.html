@@ -28,7 +28,7 @@
         /* Grid System */
         .template-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px; 
             margin-top: 30px; 
         }
@@ -37,12 +37,12 @@
         .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         
-        .card-img { height: 200px; width: 100%; object-fit: cover; border-bottom: 1px solid #eee; }
+        .card-img { height: 180px; width: 100%; object-fit: cover; border-bottom: 1px solid #eee; }
         
         .card-body { padding: 20px; }
         .card-cat { font-size: 0.8rem; color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         .card-title { font-size: 1.2rem; margin: 5px 0 10px; font-weight: 700; color: #1e293b; }
-        .card-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; line-height: 1.5; }
+        .card-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; line-height: 1.5; min-height: 60px; }
         
         /* Tombol */
         .btn-group { display: flex; gap: 10px; }
@@ -56,7 +56,7 @@
         .back-link { display: inline-block; margin: 40px 0; color: #666; text-decoration: none; font-weight: 600; }
         .back-link:hover { color: var(--primary); }
 
-        /* === STYLE KHUSUS SEO CONTENT (DIPERCANTIK) === */
+        /* === STYLE KHUSUS SEO CONTENT === */
         #seo-content {
             margin-top: 80px;
             padding: 50px;
@@ -67,27 +67,13 @@
             text-align: left;
             border: 1px solid #f1f5f9;
         }
-        #seo-content h1 { 
-            font-size: 2rem; 
-            color: var(--primary); 
-            text-align: center; 
-            margin-bottom: 40px;
-            border-bottom: 2px solid #eff6ff;
-            padding-bottom: 20px;
-        }
-        #seo-content h2 { 
-            font-size: 1.5rem; 
-            color: #1e293b;
-            border-left: 5px solid var(--accent); 
-            padding-left: 15px; 
-            margin-top: 40px;
-        }
+        #seo-content h1 { font-size: 2rem; color: var(--primary); text-align: center; margin-bottom: 40px; border-bottom: 2px solid #eff6ff; padding-bottom: 20px; }
+        #seo-content h2 { font-size: 1.5rem; color: #1e293b; border-left: 5px solid var(--accent); padding-left: 15px; margin-top: 40px; }
         #seo-content h3 { font-size: 1.2rem; color: #334155; margin-top: 25px; }
         #seo-content p { margin-bottom: 15px; line-height: 1.8; font-size: 1rem; }
         #seo-content ul { background: #f8fafc; padding: 20px 20px 20px 40px; border-radius: 10px; }
         #seo-content li { margin-bottom: 10px; color: #334155; }
         
-        /* Footer Simple */
         footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; font-size: 0.9rem; color: #666; }
 
         @media (max-width: 600px) {
@@ -111,10 +97,10 @@
                 <div class="card-body">
                     <div class="card-cat">Travel & Wisata</div>
                     <div class="card-title">Adventure Pro</div>
-                    <p class="card-desc">Cocok untuk agen travel, sewa mobil, atau trip organizer. Tampilan fresh dengan galeri destinasi yang memukau.</p>
+                    <p class="card-desc">Cocok untuk agen travel, sewa mobil, atau trip organizer. Tampilan fresh dengan galeri destinasi.</p>
                     <div class="btn-group">
-                        <a href="./demo/travel.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Live Demo</a>
-                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Adventure%20Pro*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                        <a href="./demo/travel.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Adventure%20Pro" class="btn btn-select">Pilih</a>
                     </div>
                 </div>
             </div>
@@ -124,10 +110,10 @@
                 <div class="card-body">
                     <div class="card-cat">Kuliner & Resto</div>
                     <div class="card-title">Yummy Bites</div>
-                    <p class="card-desc">Desain menggugah selera untuk Cafe, Restoran, atau Catering. Dilengkapi fitur menu digital dan tombol reservasi.</p>
+                    <p class="card-desc">Desain menggugah selera untuk Cafe, Restoran, atau Catering. Fitur menu digital.</p>
                     <div class="btn-group">
-                        <a href="./demo/resto.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Live Demo</a>
-                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Yummy%20Bites*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                        <a href="./demo/resto.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Yummy%20Bites" class="btn btn-select">Pilih</a>
                     </div>
                 </div>
             </div>
@@ -137,10 +123,10 @@
                 <div class="card-body">
                     <div class="card-cat">Toko Online</div>
                     <div class="card-title">Mega Store</div>
-                    <p class="card-desc">Template eCommerce modern. Cocok untuk jualan baju, elektronik, atau skincare. Fitur keranjang belanja siap pakai.</p>
+                    <p class="card-desc">Template eCommerce modern. Jualan baju, elektronik, atau skincare. Keranjang belanja siap pakai.</p>
                     <div class="btn-group">
-                        <a href="./demo/toko.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Live Demo</a>
-                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Mega%20Store*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                        <a href="./demo/toko.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Mega%20Store" class="btn btn-select">Pilih</a>
                     </div>
                 </div>
             </div>
@@ -150,10 +136,10 @@
                 <div class="card-body">
                     <div class="card-cat">Sales Mobil/Motor</div>
                     <div class="card-title">Auto Dealer</div>
-                    <p class="card-desc">Wajib bagi Sales Otomotif. Tampilkan promo, brosur harga, dan tombol 'Test Drive' yang menonjol.</p>
+                    <p class="card-desc">Wajib bagi Sales Otomotif. Tampilkan promo, brosur harga, dan tombol 'Test Drive'.</p>
                     <div class="btn-group">
-                        <a href="./demo/auto.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Live Demo</a>
-                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Auto%20Dealer*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                        <a href="./demo/auto.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Auto%20Dealer" class="btn btn-select">Pilih</a>
                     </div>
                 </div>
             </div>
@@ -163,23 +149,49 @@
                 <div class="card-body">
                     <div class="card-cat">Perusahaan / CV</div>
                     <div class="card-title">Corporate Biz</div>
-                    <p class="card-desc">Desain formal, bersih, dan elegan untuk meningkatkan kredibilitas perusahaan, kontraktor, atau lembaga.</p>
+                    <p class="card-desc">Desain formal, bersih, dan elegan untuk meningkatkan kredibilitas perusahaan/kontraktor.</p>
                     <div class="btn-group">
-                        <a href="./demo/corporate.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Live Demo</a>
-                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20template%20*Corporate%20Biz*%20untuk%20website%20saya" class="btn btn-select">Pilih Ini</a>
+                        <a href="./demo/corporate.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Corporate%20Biz" class="btn btn-select">Pilih</a>
                     </div>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Jasa Pembuatan Aplikasi" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Produk Viral">
                 <div class="card-body">
-                    <div class="card-cat" style="color: #333;">Custom Development</div>
-                    <div class="card-title">Aplikasi Android & iOS</div>
-                    <p class="card-desc">Jasa pembuatan aplikasi mobile (APK) untuk startup, ojek online, kasir, atau absensi. Siap publish ke Playstore.</p>
+                    <div class="card-cat">Landing Page (Sales)</div>
+                    <div class="card-title">Viral Product</div>
+                    <p class="card-desc">Fokus jualan 1 produk. Ada countdown timer dan tombol beli yang mencolok. Konversi tinggi.</p>
                     <div class="btn-group">
-                        <a href="./demo/aplikasi.html" target="_blank" class="btn btn-preview"><i class="fas fa-mobile-alt"></i> Lihat Konsep</a>
-                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20punya%20ide%20aplikasi,%20mau%20konsultasi%20harganya" class="btn btn-select" style="background: #333;">Konsultasi</a>
+                        <a href="./demo/landing-produk.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Landing%20Page" class="btn btn-select">Pilih</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="UMKM">
+                <div class="card-body">
+                    <div class="card-cat">UMKM / Makanan Ringan</div>
+                    <div class="card-title">UMKM Hemat</div>
+                    <p class="card-desc">Katalog simpel untuk jualan keripik, sambal, atau jajanan. Ringan dan langsung ke WA.</p>
+                    <div class="btn-group">
+                        <a href="./demo/umkm.html" target="_blank" class="btn btn-preview"><i class="far fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20pilih%20Paket%20UMKM" class="btn btn-select">Pilih</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Aplikasi" loading="lazy">
+                <div class="card-body">
+                    <div class="card-cat" style="color: #333;">Custom Apps</div>
+                    <div class="card-title">Android & iOS App</div>
+                    <p class="card-desc">Jasa pembuatan aplikasi mobile (APK) untuk startup, ojek online, atau kasir.</p>
+                    <div class="btn-group">
+                        <a href="./demo/aplikasi.html" target="_blank" class="btn btn-preview"><i class="fas fa-mobile-alt"></i> Konsep</a>
+                        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20konsultasi%20Aplikasi" class="btn btn-select" style="background: #333;">Chat</a>
                     </div>
                 </div>
             </div>
@@ -192,93 +204,16 @@
 
         <section id="seo-content">
             <h1>Jasa Pembuatan Website Profesional untuk Bisnis Modern</h1>
-            
-            <p>
-            OemahDesainWeb adalah penyedia jasa pembuatan website profesional yang
-            membantu pelaku usaha meningkatkan kredibilitas dan omset bisnis melalui
-            website modern, cepat, dan SEO friendly. Kami melayani pembuatan website
-            untuk UMKM, startup, perusahaan, hingga personal branding dengan desain
-            yang responsif dan mengikuti standar teknologi terkini.
-            </p>
-            
-            <p>
-            Di era digital saat ini, website bukan hanya sekadar tampilan online,
-            tetapi merupakan aset penting untuk membangun kepercayaan pelanggan.
-            OemahDesainWeb menghadirkan solusi website yang dirancang khusus untuk
-            kebutuhan bisnis Anda, mulai dari landing page promosi, company profile,
-            hingga toko online yang siap digunakan untuk penjualan.
-            </p>
-            
+            <p>OemahDesainWeb adalah penyedia jasa pembuatan website profesional yang membantu pelaku usaha meningkatkan kredibilitas dan omset bisnis melalui website modern, cepat, dan SEO friendly.</p>
             <h2>Layanan Jasa Website yang Kami Sediakan</h2>
-            
-            <p>
-            Kami menyediakan berbagai layanan jasa pembuatan website yang dapat
-            disesuaikan dengan kebutuhan dan target pasar Anda. Setiap website yang
-            kami bangun dirancang dengan struktur yang rapi, navigasi yang mudah,
-            serta performa yang optimal di perangkat desktop maupun mobile.
-            </p>
-            
             <ul>
-                <li>Jasa pembuatan landing page untuk promosi produk dan jasa</li>
+                <li>Jasa pembuatan landing page untuk promosi produk</li>
                 <li>Website company profile profesional</li>
                 <li>Website toko online siap jual</li>
-                <li>Optimasi kecepatan dan SEO website</li>
-                <li>Desain website responsif dan modern</li>
+                <li>Jasa Pembuatan Aplikasi Android & iOS</li>
             </ul>
-            
-            <h2>Mengapa Memilih OemahDesainWeb?</h2>
-            
-            <p>
-            OemahDesainWeb berfokus pada kualitas, performa, dan hasil. Kami memahami
-            bahwa setiap bisnis memiliki karakter dan tujuan yang berbeda, sehingga
-            setiap website dirancang secara custom agar sesuai dengan identitas brand
-            dan target audiens. Dengan pendekatan ini, website Anda tidak hanya terlihat
-            menarik, tetapi juga mampu mendukung strategi pemasaran digital secara
-            maksimal.
-            </p>
-            
-            <p>
-            Website yang kami buat dioptimalkan untuk kecepatan loading, struktur SEO,
-            dan kemudahan pengelolaan. Hal ini bertujuan agar website lebih mudah
-            ditemukan di mesin pencari seperti Google dan memberikan pengalaman
-            pengguna yang nyaman bagi pengunjung.
-            </p>
-            
-            <h3>Desain Modern dan Responsif</h3>
-            
-            <p>
-            Semua website dari OemahDesainWeb menggunakan desain modern dan responsif,
-            sehingga tampil optimal di berbagai ukuran layar, baik smartphone,
-            tablet, maupun desktop. Desain yang rapi dan profesional membantu
-            meningkatkan kepercayaan calon pelanggan terhadap bisnis Anda.
-            </p>
-            
-            <h3>Website Cepat dan SEO Friendly</h3>
-            
-            <p>
-            Kecepatan dan SEO adalah prioritas utama dalam setiap proyek website yang
-            kami kerjakan. Struktur kode yang bersih dan ringan membantu website
-            lebih cepat diakses serta lebih mudah di-crawl oleh mesin pencari.
-            Dengan optimasi SEO dasar yang tepat, peluang website muncul di hasil
-            pencarian Google akan semakin besar.
-            </p>
-            
-            <h2>Solusi Website untuk Meningkatkan Omset Bisnis</h2>
-            
-            <p>
-            OemahDesainWeb hadir sebagai partner digital untuk membantu bisnis Anda
-            berkembang secara online. Dengan website yang profesional, informatif,
-            dan mudah diakses, calon pelanggan dapat dengan mudah mengenal layanan
-            atau produk yang Anda tawarkan. Website yang baik mampu menjadi alat
-            pemasaran yang bekerja selama 24 jam tanpa henti.
-            </p>
-            
-            <p>
-            Jika Anda sedang mencari jasa pembuatan website yang terpercaya, modern,
-            dan berorientasi pada hasil, OemahDesainWeb adalah pilihan yang tepat.
-            Kami siap membantu Anda memiliki website profesional yang mendukung
-            pertumbuhan bisnis dan meningkatkan daya saing di dunia digital.
-            </p>
+            <h2>Mengapa Memilih Kami?</h2>
+            <p>Kami berfokus pada kualitas, performa, dan hasil. Setiap website dirancang custom agar sesuai dengan identitas brand dan target audiens Anda.</p>
         </section>
 
         <footer>
@@ -287,24 +222,14 @@
 
     </div>
 
-    <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20dengan%20salah%20satu%20desain%20website" 
+    <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20desain%20website" 
         style="
-        position: fixed !important; 
-        bottom: 20px !important; 
-        right: 20px !important; 
-        width: auto !important; 
-        max-width: fit-content !important;
-        display: inline-flex !important; 
-        align-items: center; 
-        gap: 8px;
-        background-color: #25d366; 
-        color: white; 
-        padding: 10px 20px; 
-        border-radius: 50px; 
-        text-decoration: none; 
-        font-weight: bold; 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-        z-index: 99999; font-family: sans-serif;">
+        position: fixed !important; bottom: 20px !important; right: 20px !important; 
+        width: auto !important; max-width: fit-content !important;
+        display: inline-flex !important; align-items: center; gap: 8px;
+        background-color: #25d366; color: white; padding: 10px 20px; 
+        border-radius: 50px; text-decoration: none; font-weight: bold; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99999; font-family: sans-serif;">
         <i class="fab fa-whatsapp" style="font-size: 20px;"></i> 
         <span>Chat Admin</span>
     </a>
