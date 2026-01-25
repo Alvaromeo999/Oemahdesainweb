@@ -16,32 +16,39 @@
         .nav-links a { margin-left: 20px; font-weight: 500; }
         .btn-nav { background: #f39c12; padding: 10px 20px; border-radius: 5px; color: white; }
 
-        /* Hero Section */
-        header {
-            height: 450px; /* <--- UBAH JADI INI (Tinggi fix yang ideal) */
-            /* Sisanya biarkan sama */
+        /* Hero Section (Banner Atas) */
+        header { 
+            /* REVISI: Dikecilkan dari 450px menjadi 350px */
+            height: 350px; 
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
+            background-size: cover; 
             background-position: center;
-            /* ... dst ... */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            padding: 0 20px;
         }
-        header h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; }
-        .btn-main { background: #f39c12; color: white; padding: 15px 30px; font-size: 1.1rem; border-radius: 50px; transition: 0.3s; }
+        header h1 { font-size: 2.5rem; margin-bottom: 15px; } /* Font judul juga dikecilkan sedikit */
+        header p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 25px; }
+        .btn-main { background: #f39c12; color: white; padding: 12px 25px; font-size: 1rem; border-radius: 50px; transition: 0.3s; }
         .btn-main:hover { transform: scale(1.05); }
 
         /* Features */
-        .features { padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center; }
-        .feature-item i { font-size: 2.5rem; color: #f39c12; margin-bottom: 15px; }
+        .features { padding: 60px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
+        .feature-item i { font-size: 2rem; color: #f39c12; margin-bottom: 15px; }
         
-        /* Gallery */
-        /* Ubah height jadi 220px agar lebih ramping */
-        .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+        /* Gallery (Gambar-gambar Bawah) */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; padding: 10px; }
+        
+        /* REVISI: Dikecilkan dari 300px menjadi 200px */
+        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
 
         /* Footer */
-        footer { background: #222; color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+        footer { background: #222; color: white; text-align: center; padding: 30px 20px; margin-top: 40px; }
 
-        /* Banner Demo (Penting untuk jualan) */
+        /* Banner Demo Fixed */
         .demo-bar {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: #fff; border-top: 1px solid #ddd;
