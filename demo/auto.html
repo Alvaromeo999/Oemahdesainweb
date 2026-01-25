@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Auto Dealer - Oemah Desain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { margin: 0; font-family: sans-serif; background: #111; color: white; }
+        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 2px solid #e74c3c; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #e74c3c; text-transform: uppercase; }
+        
+        header { 
+            height: 500px; 
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; padding: 0 5%;
+        }
+        h1 { font-size: 3rem; margin-bottom: 10px; line-height: 1.2; }
+        .btn-drive { background: #e74c3c; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .specs { padding: 50px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .spec-box { background: #222; padding: 20px; border-radius: 10px; border: 1px solid #333; }
+        .spec-box i { font-size: 2rem; color: #e74c3c; margin-bottom: 10px; }
+
+        .demo-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; color: #333; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+        .btn-buy { background: #25d366; color: white; padding: 8px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Turbo Auto</div>
+        <div style="color: #ccc;">Promo Bulan Ini</div>
+    </nav>
+    <header>
+        <div>
+            <h1>RAIH IMPIAN<br><span style="color: #e74c3c;">KENDARAAN ANDA</span></h1>
+            <p>Dapatkan penawaran DP Ringan & Bunga 0% khusus hari ini.</p>
+            <a href="#" class="btn-drive">Booking Test Drive</a>
+        </div>
+    </header>
+    <section class="specs">
+        <div class="spec-box"><i class="fas fa-gas-pump"></i><h3>Irit BBM</h3></div>
+        <div class="spec-box"><i class="fas fa-shield-alt"></i><h3>Garansi Mesin</h3></div>
+        <div class="spec-box"><i class="fas fa-money-bill-wave"></i><h3>Proses Mudah</h3></div>
+    </section>
+    <div style="height: 60px;"></div>
+    <div class="demo-bar">
+        <div><strong>Demo Dealer Mobil.</strong> Cocok untuk Sales.</div>
+        <a href="https://wa.me/628121515633" class="btn-buy">Pesan Web Ini</a>
+    </div>
+</body>
+</html>
