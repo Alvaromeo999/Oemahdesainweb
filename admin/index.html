@@ -100,6 +100,50 @@ fbq('track', 'PageView');
     </div>
   </div>
 
+          <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script src="admin.js"></script>
+
+          <script src="main.js"></script>
+
+                    /* =========================
+             WHATSAPP TRACKING (GA4)
+          ========================= */
+          (function initWATracking() {
+            const buttons = document.querySelectorAll('[data-wa]');
+            if (!buttons.length) return;
+          
+            const WA_NUMBER = '628121515633';
+          
+            buttons.forEach(btn => {
+              btn.addEventListener('click', e => {
+                e.preventDefault();
+          
+                const message = btn.dataset.wa || '';
+                const source = btn.dataset.source || 'unknown';
+          
+                /* === GA4 EVENT === */
+                if (typeof gtag === 'function') {
+                  gtag('event', 'click_whatsapp', {
+                    event_category: 'engagement',
+                    event_label: source
+                  });
+                }
+          
+                /* === META PIXEL EVENT === */
+                if (typeof fbq === 'function') {
+                  fbq('trackCustom', 'ClickWhatsApp', {
+                    source: source
+                  });
+                }
+          
+                const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+              });
+            });
+          })();
+
+
+          
 </body>
 </html>
