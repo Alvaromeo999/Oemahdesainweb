@@ -471,5 +471,85 @@
     tampilkanUlasan(); // <--- Ini perintah kuncinya!
   });
 </script>
+
+<div id="techStackWrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: sans-serif;">
+  
+  <button onclick="toggleTechStack()" 
+          style="background: #0f172a; color: #fff; border: 1px solid #334155; padding: 10px 15px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: 0.3s;">
+    <i class="fas fa-code" style="color: #38bdf8;"></i>
+    <span style="font-weight: bold; font-size: 12px;">Tech Specs</span>
+  </button>
+
+  <div id="techStackContent" 
+       style="display: none; position: absolute; bottom: 50px; right: 0; width: 280px; background: #1e293b; color: #fff; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); overflow: hidden; animation: slideUp 0.3s ease-out;">
+    
+    <div style="background: #0f172a; padding: 12px 15px; border-bottom: 1px solid #334155;">
+      <h4 style="margin: 0; font-size: 14px; color: #38bdf8;">⚡ Built With Performance</h4>
+    </div>
+
+    <div style="padding: 15px; font-size: 13px; line-height: 1.6;">
+      
+      <div style="margin-bottom: 12px;">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">1. Languages (Clean Code)</strong>
+        <div style="display: flex; gap: 5px;">
+          <span style="background: #e34c26; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px;">HTML5 84%</span>
+          <span style="background: #264de4; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px;">CSS3</span>
+          <span style="background: #f7df1e; color: black; padding: 2px 8px; border-radius: 4px; font-size: 10px;">JS ES6+</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">2. Power Tools</strong>
+        <ul style="margin: 0; padding-left: 15px; color: #cbd5e1;">
+          <li>🔥 <strong>Supabase</strong> (Realtime DB)</li>
+          <li>📊 <strong>Looker Studio</strong> (Analytics)</li>
+          <li>🎯 <strong>GA4 & Meta Pixel</strong> (Tracking)</li>
+        </ul>
+      </div>
+
+      <div>
+        <strong style="color: #94a3b8; display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">3. Security Level</strong>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <i class="fas fa-shield-alt" style="color: #10b981;"></i> Cloudflare Protected
+          </span>
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <i class="fas fa-lock" style="color: #10b981;"></i> SSL Encryption (HTTPS)
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleTechStack() {
+    const box = document.getElementById('techStackContent');
+    const btn = document.querySelector('#techStackWrapper button');
+    
+    if (box.style.display === 'none') {
+      box.style.display = 'block';
+      btn.style.background = '#38bdf8'; // Ubah warna tombol saat aktif
+      btn.style.color = '#000';
+    } else {
+      box.style.display = 'none';
+      btn.style.background = '#0f172a'; // Balikin warna tombol
+      btn.style.color = '#fff';
+    }
+  }
+
+  // Tambah animasi CSS lewat JS biar ringkas
+  const styleSheet = document.createElement("style");
+  styleSheet.innerText = `
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `;
+  document.head.appendChild(styleSheet);
+</script>
+
+
 </body>
 </html>
