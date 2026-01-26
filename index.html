@@ -523,28 +523,111 @@
   </div>
 </div>
 
+<div id="techStackWrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: sans-serif;">
+  
+  <button onclick="toggleTechStack()" 
+          style="background: #0f172a; color: #fff; border: 1px solid #334155; padding: 10px 15px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: 0.3s;">
+    <i class="fas fa-layer-group" style="color: #38bdf8;"></i>
+    <span style="font-weight: bold; font-size: 12px;">Tech Stack</span>
+  </button>
+
+  <div id="techStackContent" 
+       style="display: none; position: absolute; bottom: 50px; right: 0; width: 300px; background: #1e293b; color: #fff; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.6); overflow: hidden; animation: slideUp 0.3s ease-out;">
+    
+    <div style="background: #0f172a; padding: 15px; border-bottom: 1px solid #334155; display: flex; align-items: center; gap: 10px;">
+      <i class="fas fa-bolt" style="color: #f59e0b;"></i>
+      <h4 style="margin: 0; font-size: 14px; color: #fff;">Built for Speed & Scale</h4>
+    </div>
+
+    <div style="padding: 20px 15px; font-size: 13px; line-height: 1.6;">
+      
+      <div style="margin-bottom: 20px;">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">1. Core Technologies</strong>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <div style="background: #0f172a; border: 1px solid #334155; padding: 4px 10px; border-radius: 6px; display: flex; align-items: center; gap: 6px;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="16" alt="HTML5">
+            <span style="font-weight: bold; color: #e34c26;">HTML5 (84%)</span>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #334155; padding: 4px 10px; border-radius: 6px; display: flex; align-items: center; gap: 6px;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="16" alt="CSS3">
+            <span style="font-weight: bold; color: #264de4;">CSS3</span>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #334155; padding: 4px 10px; border-radius: 6px; display: flex; align-items: center; gap: 6px;">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="16" alt="JS">
+            <span style="font-weight: bold; color: #f7df1e;">Modern JS</span>
+          </div>
+        </div>
+        <small style="display: block; margin-top: 5px; color: #64748b; font-style: italic;">*Lightweight, no heavy frameworks.</small>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">2. Backend & Data Engine</strong>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          
+          <div style="display: flex; align-items: center; gap: 10px; background: #282a36; padding: 8px; border-radius: 6px;">
+            <img src="https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png" width="20" alt="Supabase">
+            <div>
+              <strong style="color: #3ecf8e; display: block;">Supabase</strong>
+              <span style="color: #cbd5e1; font-size: 12px;">Realtime Database & Auth.</span>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 10px; background: #282a36; padding: 8px; border-radius: 6px;">
+            <img src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_looker_studio.svg" width="20" alt="Looker Studio">
+             <div>
+              <strong style="color: #4285f4; display: block;">Looker & GA4</strong>
+              <span style="color: #cbd5e1; font-size: 12px;">Advanced Traffic Analytics.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">3. Security & Performance</strong>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          
+          <div style="display: flex; align-items: center; gap: 8px; padding: 4px 0;">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png" width="60" alt="Cloudflare" style="filter: brightness(0) invert(1); opacity: 0.8;"> <span style="color: #cbd5e1; font-size: 12px;">Global CDN & DDoS Protection.</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; padding: 4px 0; color: #10b981;">
+            <i class="fas fa-lock" style="font-size: 16px;"></i> 
+            <span style="font-size: 12px; font-weight: bold;">SSL Encrypted (HTTPS)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
   function toggleTechStack() {
     const box = document.getElementById('techStackContent');
     const btn = document.querySelector('#techStackWrapper button');
+    const icon = btn.querySelector('i');
     
     if (box.style.display === 'none') {
       box.style.display = 'block';
-      btn.style.background = '#38bdf8'; // Ubah warna tombol saat aktif
-      btn.style.color = '#000';
+      btn.style.background = '#38bdf8'; 
+      btn.style.color = '#0f172a';
+      btn.style.borderColor = '#38bdf8';
+      icon.className = 'fas fa-times'; // Ubah ikon jadi 'X' saat terbuka
     } else {
       box.style.display = 'none';
-      btn.style.background = '#0f172a'; // Balikin warna tombol
+      btn.style.background = '#0f172a'; 
       btn.style.color = '#fff';
+      btn.style.borderColor = '#334155';
+      icon.className = 'fas fa-layer-group'; // Balikin ikon tumpukan
     }
   }
 
-  // Tambah animasi CSS lewat JS biar ringkas
   const styleSheet = document.createElement("style");
   styleSheet.innerText = `
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
   `;
   document.head.appendChild(styleSheet);
