@@ -265,25 +265,99 @@
       </div>
     </section>
 
-    <section id="review" class="section text-center" style="padding: 50px 0; background: #fff;">
-        <div class="container">
-            <h2>Ulasan Pelanggan</h2>
-            <div id="averageDisplay" style="margin-bottom: 20px; font-weight: bold; font-size: 1.2rem;"></div>
-            <div class="review-section" style="max-width: 600px; margin: 0 auto;">
-                <div class="stars" style="color: #f39c12; font-size: 1.5rem; margin-bottom: 10px;">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <textarea id="reviewText" placeholder="Tulis pengalaman Anda menggunakan jasa kami..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; min-height: 100px;"></textarea>
-                <input type="text" id="botField" style="display:none !important" tabindex="-1" autocomplete="off">
-                <br>
-                <button id="submitBtn" type="button" class="btn-primary" style="margin-top: 15px; cursor: pointer;">Kirim Ulasan</button>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-                    👁 Pengunjung hari ini: <span id="visitorCount">Loading...</span>
-                </p>
-                <div id="reviewList" style="margin-top: 30px; text-align: left;"></div>
-            </div>
-        </div>
-    </section>
+   <div class="ulasan-box" style="max-width: 500px; margin: 20px auto; text-align: center;">
+  <h3>🌟 Beri Rating Pelayanan Kami</h3>
+  
+  <div id="starContainer" style="font-size: 30px; cursor: pointer; color: #ccc; margin-bottom: 10px;">
+    <span onclick="pilihBintang(1)" id="star1">★</span>
+    <span onclick="pilihBintang(2)" id="star2">★</span>
+    <span onclick="pilihBintang(3)" id="star3">★</span>
+    <span onclick="pilihBintang(4)" id="star4">★</span>
+    <span onclick="pilihBintang(5)" id="star5">★</span>
+  </div>
+
+  <textarea id="isiUlasan" placeholder="Tulis pengalaman Anda menggunakan jasa kami..." 
+            style="width: 100%; height: 80px; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+
+  <button onclick="kirimUlasan()" id="btnKirimUlasan" 
+          style="background: #f59e0b; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer; font-weight: bold; width: 100%;">
+    Kirim Ulasan
+  </button>
+</div>
+
+<script>
+  let bintangSkrg = 0; // Variabel penyimpan nilai bintang
+
+  // 1. Fungsi Mewarnai Bintang saat diklik
+  function pilihBintang(n) {
+    bintangSkrg = n;
+    // Reset semua jadi abu-abu dulu
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById('star' + i).style.color = '#ccc';
+    }
+    // Warnai kuning sampai ke angka yang dipilih
+    for (let i = 1; i <= n; i++) {
+      document.getElementById('star' + i).style.color = '#f59e0b'; // Warna Emas
+    }
+  }
+
+  // 2. Fungsi Kirim ke Database
+  async function kirimUlasan() {
+    // Ambil isi text
+    const isiPesan = document.getElementById('isiUlasan').value;
+    const btn = document.getElementById('btnKirimUlasan');
+
+    // Validasi: Harus pilih bintang & isi pesan
+    if (bintangSkrg === 0) {
+      alert("⚠️ Mohon pilih jumlah bintang dulu!");
+      return;
+    }
+    if (isiPesan.trim() === "") {
+      alert("⚠️ Mohon tulis ulasan Anda!");
+      return;
+    }
+
+    // Efek Loading
+    btn.innerText = "Mengirim...";
+    btn.disabled = true;
+
+    // --- PROSES KIRIM KE SUPABASE ---
+    // (Pastikan variabel 'db' atau 'supabase' sudah ada dari script visitor sebelumnya)
+    // Kita panggil ulang settingan db di sini biar aman kalau script terpisah
+    const SB_URL = 'https://tosjjicxibibuxpskpjz.supabase.co'; // GANTI DENGAN URL ANDA
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0'; // GANTI DENGAN KEY ANDA
+    const clientDB = supabase.createClient(SB_URL, SB_KEY);
+
+    try {
+      const { error } = await clientDB
+        .from('reviews')
+        .insert([
+          { 
+            rating: bintangSkrg, 
+            comment: isiPesan 
+          }
+        ]);
+
+      if (error) throw error;
+
+      // SUKSES
+      alert("✅ Terima kasih! Ulasan Anda berhasil dikirim.");
+      
+      // Reset Form
+      document.getElementById('isiUlasan').value = "";
+      pilihBintang(0); // Reset bintang
+      bintangSkrg = 0;
+
+    } catch (err) {
+      console.error("Gagal kirim ulasan:", err);
+      alert("❌ Maaf, gagal mengirim ulasan. Coba lagi.");
+    } finally {
+      // Kembalikan tombol
+      btn.innerText = "Kirim Ulasan";
+      btn.disabled = false;
+    }
+  }
+</script>
 
   </main> 
 
