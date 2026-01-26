@@ -348,53 +348,65 @@
 <script>
   document.addEventListener("DOMContentLoaded", async function() {
     
-    // --- SETTING KUNCI (PASTIKAN SUDAH DIGANTI YANG ASLI) ---
-    const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co'; 
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0'; 
+    // --- 1. SETTING KUNCI (PASTIKAN SUDAH BENAR) ---
+    const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co'; // GANTI INI
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0'; // GANTI INI
 
-    // --- PERBAIKAN DI SINI (Ganti nama jadi 'db') ---
-    // Agar tidak bentrok dengan nama library 'supabase'
+    // Inisialisasi (Gunakan 'db' biar aman)
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // --- LOGIKA PENCATATAN ---
+    // --- 2. FUNGSI SIMPAN VISITOR (YANG TADI) ---
     async function simpanDataVisitor() {
       try {
-        console.log("🔄 Sedang mengambil IP...");
-
-        // A. Ambil IP Address
         const response = await fetch('https://api.ipify.org?format=json');
         const dataIP = await response.json();
         const ipUser = dataIP.ip;
-
-        // B. Ambil Info Perangkat
         const deviceUser = navigator.userAgent;
 
-        // C. Simpan ke Database (Pakai variabel 'db')
-        const { error } = await db
-          .from('visitors')
-          .insert([
-            { 
-              ip_address: ipUser, 
-              device_info: deviceUser 
-            }
-          ]);
+        // Cek Blacklist (Opsional)
+        // if (['1.2.3.4'].includes(ipUser)) return;
 
-        if (error) {
-          console.error("❌ Gagal Simpan ke Supabase:", error.message);
-        } else {
-          console.log("✅ SUKSES! IP " + ipUser + " tercatat di database.");
-        }
+        await db.from('visitors').insert([{ ip_address: ipUser, device_info: deviceUser }]);
+        
+        // Setelah simpan sukses, langsung hitung ulang angka
+        hitungPengunjungHariIni();
 
       } catch (err) {
-        console.error("❌ Error:", err);
+        console.error("Error tracking:", err);
       }
     }
 
-    // Jalankan
-    simpanDataVisitor();
+    // --- 3. FUNGSI BARU: HITUNG PENGUNJUNG HARI INI ---
+    async function hitungPengunjungHariIni() {
+      // Cari elemen HTML yang ada tulisannya "Loading..."
+      // Pastikan di HTML Mas ada: <span id="visitorCount">Loading...</span>
+      const elementAngka = document.getElementById('visitorCount'); 
+      
+      if (!elementAngka) return; // Kalau elemen gak ada, stop.
+
+      // Ambil tanggal hari ini (Format YYYY-MM-DD)
+      const hariIni = new Date().toISOString().split('T')[0]; 
+
+      // Minta Supabase menghitung data mulai dari jam 00:00 hari ini
+      const { count, error } = await db
+        .from('visitors')
+        .select('*', { count: 'exact', head: true }) // head:true artinya cuma hitung, gak ambil data berat
+        .gte('created_at', hariIni); // Filter: Created At >= Hari Ini
+
+      if (error) {
+        console.error("Gagal hitung:", error.message);
+        elementAngka.innerText = "(Error)";
+      } else {
+        // Tampilkan Angka
+        elementAngka.innerText = count + " Orang";
+      }
+    }
+
+    // Jalankan keduanya
+    simpanDataVisitor();      // 1. Simpan data saya
+    hitungPengunjungHariIni(); // 2. Tampilkan jumlah orang lain
   });
 </script>
-
 
 </body>
 </html>
