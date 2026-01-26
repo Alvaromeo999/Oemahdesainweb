@@ -358,13 +358,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  // --- KONFIGURASI UMUM ---
+  // --- KONFIGURASI DB ---
   const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co'; 
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0';
+  
   const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   // ============================
-  // BAGIAN 1: SISTEM REVIEW
+  // BAGIAN 1: KIRIM ULASAN
   // ============================
   let bintangSkrg = 0;
 
@@ -382,8 +383,8 @@
     const isiPesan = document.getElementById('isiUlasan').value;
     const btn = document.getElementById('btnKirimUlasan');
 
-    if (bintangSkrg === 0) { alert("⚠️ Mohon pilih bintang dulu!"); return; }
-    if (isiPesan.trim() === "") { alert("⚠️ Mohon tulis ulasan!"); return; }
+    if (bintangSkrg === 0) { alert("⚠️ Pilih bintang dulu!"); return; }
+    if (!isiPesan) { alert("⚠️ Tulis ulasan dulu!"); return; }
 
     btn.innerText = "Mengirim..."; btn.disabled = true;
 
@@ -391,46 +392,81 @@
       const { error } = await db.from('reviews').insert([{ rating: bintangSkrg, comment: isiPesan }]);
       if (error) throw error;
 
-      alert("✅ Ulasan berhasil dikirim!");
+      alert("✅ Ulasan terkirim! Terima kasih.");
       document.getElementById('isiUlasan').value = "";
       pilihBintang(0); bintangSkrg = 0;
+      
+      // Refresh daftar ulasan
+      tampilkanUlasan(); 
+
     } catch (err) {
       console.error("Gagal Review:", err);
-      alert("❌ Gagal kirim. Cek koneksi internet.");
+      alert("❌ Gagal kirim. Cek koneksi.");
     } finally {
       btn.innerText = "Kirim Ulasan"; btn.disabled = false;
     }
   }
 
   // ============================
-  // BAGIAN 2: SISTEM TRAFFIC
+  // BAGIAN 2: TAMPILKAN ULASAN (INI YANG BIKIN MUNCUL)
   // ============================
-  async function simpanDanHitungTraffic() {
+  async function tampilkanUlasan() {
+    const wadah = document.getElementById('wadahUlasan');
+    if(!wadah) return;
+
+    // Ambil data
+    const { data, error } = await db
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    if (error) { console.error("Error ambil ulasan:", error); return; }
+
+    if (!data || data.length === 0) {
+      wadah.innerHTML = "<p style='text-align:center; color:#ccc;'>Belum ada ulasan.</p>";
+      return;
+    }
+
+    // Render ke HTML
+    wadah.innerHTML = ""; 
+    data.forEach(ulasan => {
+      let bintangHTML = "";
+      for(let i=0; i<5; i++) {
+        bintangHTML += (i < ulasan.rating) ? "★" : "<span style='color:#ccc'>★</span>";
+      }
+      const card = `
+        <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #f0f0f0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+           <div style="color: #f59e0b; font-size: 18px;">${bintangHTML}</div>
+           <p style="margin: 5px 0; color: #555; font-style: italic;">"${ulasan.comment}"</p>
+        </div>`;
+      wadah.innerHTML += card;
+    });
+  }
+
+  // ============================
+  // BAGIAN 3: TRAFFIC
+  // ============================
+  async function hitungTraffic() {
      try {
-       // 1. Simpan Visitor
+       // Simpan & Hitung
        const resp = await fetch('https://api.ipify.org?format=json');
        const dataIP = await resp.json();
        await db.from('visitors').insert([{ ip_address: dataIP.ip, device_info: navigator.userAgent }]);
        
-       // 2. Hitung Pengunjung Hari Ini
        const hariIni = new Date().toISOString().split('T')[0];
-       const { count, error } = await db.from('visitors')
-         .select('*', { count: 'exact', head: true })
-         .gte('created_at', hariIni);
+       const { count } = await db.from('visitors').select('*', { count: 'exact', head: true }).gte('created_at', hariIni);
 
-       // 3. Tampilkan Angka (Cari elemen visitorCount)
        const elAngka = document.getElementById('visitorCount');
-       if(elAngka && !error) {
-         elAngka.innerText = count + " Orang";
-       }
-     } catch (err) {
-       console.error("Tracking Error:", err);
-     }
+       if(elAngka) elAngka.innerText = count + " Orang";
+     } catch (err) { console.error("Traffic Error:", err); }
   }
 
-  // Jalankan Traffic saat web dibuka
-  document.addEventListener("DOMContentLoaded", simpanDanHitungTraffic);
+  // JALANKAN SEMUA
+  document.addEventListener("DOMContentLoaded", function() {
+    hitungTraffic(); 
+    tampilkanUlasan(); // <--- Ini perintah kuncinya!
+  });
 </script>
-
 </body>
 </html>
