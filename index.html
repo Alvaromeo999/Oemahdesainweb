@@ -1,202 +1,472 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Panel - OemahDesainWeb</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+                          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                          })(window,document,'script','dataLayer','GTM-NNX3NPP2');</script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    /* CSS GLOBAL */
-    body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 20px; display: flex; justify-content: center; }
-    .box { background: #111827; padding: 24px; border-radius: 10px; width: 100%; max-width: 900px; } /* Lebar max diperbesar biar grafik lega */
-    
-    h2 { margin-top: 0; color: #60a5fa; }
-    h3 { border-bottom: 1px solid #374151; padding-bottom: 10px; margin-top: 30px; color: #e5e7eb; }
-    
-    input, button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; box-sizing: border-box; }
-    button { background: #22c55e; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
-    button:hover { opacity: 0.9; }
-    .logout { background: #ef4444; margin-top: 30px; }
-    .hidden { display: none; }
-    
-    /* TABEL */
-    .table-container { overflow-x: auto; margin-top: 10px; border: 1px solid #374151; border-radius: 8px; }
-    table { width: 100%; border-collapse: collapse; color: #ddd; }
-    th, td { padding: 12px; border-bottom: 1px solid #374151; text-align: left; font-size: 14px; }
-    th { background-color: #1f2937; color: #9ca3af; text-transform: uppercase; font-size: 12px; }
-    tr:hover { background-color: #1f2937; }
-    
-    .refresh-btn { background: #3b82f6; width: auto; display: inline-block; padding: 8px 16px; font-size: 14px; margin-bottom: 10px; float: right;}
+  <title>Oemah Desain Website | Jasa Pembuatan Website Murah & Profesional</title>
+  <meta name="description" content="Jasa pembuatan website dengan pondasi kuat, human-friendly, dan siap tumbuh. Mulai 499rb, gratis domain & hosting." />
+  <meta name="keywords" content="jasa pembuatan website murah, jasa landing page, bikin web umkm, jasa website terpercaya, oemahdesainweb">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="favicon.png">
 
-    /* STYLE KHUSUS IFRAME LOOKER STUDIO */
-    .looker-container {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        border-radius: 8px;
-        border: 1px solid #374151;
-        background: #fff; /* Latar putih biar grafik jelas */
-        margin-top: 15px;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="./assets/css/main.css" />
 </head>
-
 <body>
 
-  <div class="box">
-    <div id="loginBox">
-      <h2 style="text-align:center;">🔐 Admin Login</h2>
-      <input type="email" id="email" placeholder="Email admin">
-      <input type="password" id="password" placeholder="Password">
-      <button id="loginBtn">Masuk Dashboard</button>
-      <p id="loginMsg" style="text-align:center; margin-top:10px; font-size:14px;"></p>
-    </div>
+              <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNX3NPP2"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                
 
-    <div id="dashboard" class="hidden">
-      
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="margin: 0;">📊 Executive Dashboard</h2>
-        <button class="refresh-btn" onclick="loadVisitors()">🔄 Refresh Data</button>
+  <header id="site-header">
+    <nav class="header-sticky">
+        <div class="logo-wrapper">
+            <img src="./assets/img/logo_kita.png" alt="Logo OemahDesainWeb">
+            <div>
+                <span style="color: #007bff;">Oemah</span><span style="color: #f39c12;">DesainWeb</span>
+            </div>
+        </div>
+        <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20tertarik%20buat%20website" class="btn-header">Pesan Sekarang</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    
+    <section id="hero">
+      <div class="container hero-content" style="text-align: center !important; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 20px; line-height: 1.3; max-width: 800px;">
+            Membangun Website Seperti Membangun Rumah Bisnis
+        </h1>
+        <p style="font-size: 1.2rem; max-width: 700px; margin-bottom: 30px; color: #555;">
+            Website bukan sekadar jadi, tapi harus kuat, nyaman, dan mampu menopang pertumbuhan usaha Anda.
+        </p>
+        <a href="#cta" class="btn btn-cta">Mulai Diskusi <i class="fas fa-arrow-right"></i></a>
       </div>
+    </section>
 
-      <h3>📈 Visualisasi Traffic (Looker Studio)</h3>
-      <div class="looker-container">
-        <iframe 
-            src="https://lookerstudio.google.com/embed/reporting/743d24e0-d502-44c5-8fab-2ef861a3608b/page/4iQmF" 
-            width="100%" 
-            height="500" 
-            frameborder="0" 
-            style="border:0" 
-            allowfullscreen 
-            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-        </iframe>
+    <section id="problem" class="section">
+      <div class="container text-center">
+        <h2>Kenapa Banyak Website Tidak Bertahan Lama?</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <i class="fas fa-times-circle" style="color:red; font-size:2rem; margin-bottom:10px;"></i>
+                <h3>Hanya Jadi Pajangan</h3>
+                <p>Website jadi tapi tidak menghasilkan traffic atau penjualan.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fas fa-tools" style="color:orange; font-size:2rem; margin-bottom:10px;"></i>
+                <h3>Susah Dikembangkan</h3>
+                <p>Struktur koding berantakan, sulit update fitur baru.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fas fa-user-secret" style="color:black; font-size:2rem; margin-bottom:10px;"></i>
+                <h3>Tidak Dipahami Pemilik</h3>
+                <p>Pemilik bisnis bingung mengelola rumah digitalnya sendiri.</p>
+            </div>
+        </div>
       </div>
+    </section>
 
-      <h3>🕵️ Log Pengunjung Terakhir</h3>
-      <p style="color: #9ca3af; font-size: 14px;">Data realtime 50 pengunjung terakhir (IP & Perangkat).</p>
-
-      <div class="table-container">
-        <table id="visitorTable">
-          <thead>
-            <tr>
-              <th>Waktu</th>
-              <th>IP Address</th>
-              <th>Perangkat</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="3" style="text-align:center;">Klik Refresh untuk memuat data...</td></tr>
-          </tbody>
-        </table>
+    <section id="solution" class="section" style="background-color: #f9f9f9;">
+      <div class="container text-center">
+        <h2>Solusi Oemah Desain Web</h2>
+        <p style="max-width: 700px; margin: 0 auto;">Kami percaya website adalah rumah digital bisnis — harus kuat pondasinya, rapi tata letaknya, dan siap dihuni untuk jangka panjang.</p>
       </div>
+    </section>
 
-      <button class="logout" id="logoutBtn">Logout Admin</button>
-    </div>
+    <section id="philosophy" class="section">
+      <div class="container text-center">
+        <h2>Filosofi Oemah</h2>
+        <blockquote style="font-style: italic; font-size: 1.2rem; color: #555; margin: 20px 0;">
+          "Prasasat Pagere Wesi — Website yang kuat nilainya, tanpa dipaksa pun orang akan segan dan percaya."
+        </blockquote>
+        <p>Seperti membangun rumah, kami memastikan website Anda mampu mengayomi bisnis dan memberi manfaat bagi pengunjung.</p>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio text-center" style="padding: 60px 0;">
+        <div class="container">
+            <h2>Katalog Pilihan Desain</h2>
+            <p style="margin-bottom: 40px;">Pilih template premium yang paling sesuai dengan karakter bisnis Anda.</p>
+            
+            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="card" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Travel" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div class="card-body" style="padding: 20px;">
+                        <div class="card-cat" style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Travel & Wisata</div>
+                        <h3 class="card-title" style="margin: 10px 0;">Adventure Pro</h3>
+                        <div class="btn-group" style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
+                             <a href="./demo/travel.html" target="_blank" style="background: #6c757d; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px;">Live Demo</a>
+                             <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20desain%20*Adventure%20Pro*" style="background: #2563eb; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px;">Pilih Ini</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Resto" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div class="card-body" style="padding: 20px;">
+                        <div class="card-cat" style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Kuliner & Resto</div>
+                        <h3 class="card-title" style="margin: 10px 0;">Yummy Bites</h3>
+                        <div class="btn-group" style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
+                             <a href="./demo/resto.html" target="_blank" style="background: #6c757d; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px;">Live Demo</a>
+                             <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20desain%20*Yummy%20Bites*" style="background: #2563eb; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px;">Pilih Ini</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Toko Online" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div class="card-body" style="padding: 20px;">
+                        <div class="card-cat" style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Toko Online</div>
+                        <h3 class="card-title" style="margin: 10px 0;">Mega Store</h3>
+                        <div class="btn-group" style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
+                             <a href="./demo/toko.html" target="_blank" style="background: #6c757d; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px;">Live Demo</a>
+                             <a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20pilih%20desain%20*Mega%20Store*" style="background: #2563eb; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px;">Pilih Ini</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="katalog.html" class="btn" style="border: 2px solid #2563eb; color: #2563eb; font-weight: bold; padding: 12px 30px; border-radius: 50px; text-decoration: none; transition: 0.3s;">
+                    Lihat Semua Desain & Artikel &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="real-project" class="section" style="background: #fffbf0; padding: 60px 0;">
+        <div class="container">
+            <h2 class="text-center">Studi Kasus: Bukti Nyata</h2>
+            <p class="text-center" style="margin-bottom: 40px;">Bukan sekadar desain, ini adalah website yang benar-benar membantu bisnis klien kami.</p>
+
+            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                
+                <div class="card" style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
+                    <div style="height: 200px; background: #ddd; border-radius: 5px; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Toko Sembako" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h3 style="margin-top: 15px;">Toko Sembako Berkah</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Transformasi toko kelontong menjadi digital dengan fitur checkout WhatsApp.</p>
+                    <a href="./portfolio/toko-sembako.html" class="btn" style="margin-top: 10px; display: inline-block; color: #f39c12; font-weight: bold;">Baca Studi Kasus &rarr;</a>
+                </div>
+
+                <div class="card" style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
+                    <div style="height: 200px; background: #ddd; border-radius: 5px; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sekolah" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h3 style="margin-top: 15px;">SMK Bina Mandiri</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Website resmi instansi pendidikan dengan fitur PPDB Online.</p>
+                    <a href="./portfolio/website-sekolah.html" class="btn" style="margin-top: 10px; display: inline-block; color: #007bff; font-weight: bold;">Baca Studi Kasus &rarr;</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="harga" class="section pricing">
+        <div class="container text-center">
+            <h2>Pilihan Paket Konstruksi Digital</h2>
+            <div class="pricing-grid">
+                
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Landing Page</h3>
+                        <p class="price">Rp 499rb</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> 1 Halaman Sales Page</li>
+                        <li><i class="fas fa-check"></i> Gratis Domain & Hosting</li>
+                        <li><i class="fas fa-check"></i> Pengerjaan Cepat</li>
+                    </ul>
+                    <a href="./jasa/kode1.html" class="btn btn-outline">Lihat Detail</a>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="badge-popular">TERLARIS</div>
+                    <div class="price-header">
+                        <h3>Website Bisnis</h3>
+                        <p class="price">Rp 899rb</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> <strong>5 Halaman Website</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>Gratis Domain .COM</strong></li>
+                        <li><i class="fas fa-check"></i> Email Bisnis Profesional</li>
+                    </ul>
+                    <a href="./jasa/kode2.html" class="btn btn-cta">Lihat Detail</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Toko Online</h3>
+                        <p class="price">Rp 1.9jt</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> <strong>Sistem Keranjang</strong></li>
+                        <li><i class="fas fa-check"></i> Hitung Ongkir Otomatis</li>
+                        <li><i class="fas fa-check"></i> Laporan Penjualan</li>
+                    </ul>
+                    <a href="./jasa/kode3.html" class="btn btn-outline">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="social-proof" class="section">
+      <div class="container">
+        <h2 class="text-center">Apa Kata Penghuni Oemah Digital?</h2>
+        <div id="testimonials" class="testimonial-grid">
+            <div class="testimonial-card" style="padding:20px; border:1px solid #eee; border-radius:10px;">
+                <h4>Budi Mulyono</h4>
+                <p>"Awalnya ragu, tapi setelah dibantu Oemah Desain, orderan jadi gampang masuk. Sistemnya simpel."</p>
+                <div style="color:gold">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial-card" style="padding:20px; border:1px solid #eee; border-radius:10px;">
+                <h4>Siti Rahma</h4>
+                <p>"Suka banget sama filosofi 'membangun pondasi'. Support-nya ramah banget."</p>
+                <div style="color:gold">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <h2 class="text-center">Pertanyaan Umum</h2>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <details style="padding: 10px; border-bottom: 1px solid #ddd; cursor: pointer;">
+            <summary style="font-weight: bold;">Berapa lama proses bangun website?</summary>
+            <p>Tergantung kompleksitas, rata-rata 2–4 minggu untuk hasil maksimal.</p>
+            </details>
+            <details style="padding: 10px; border-bottom: 1px solid #ddd; cursor: pointer;">
+            <summary style="font-weight: bold;">Apakah bisa dikembangkan nanti?</summary>
+            <p>Sangat bisa. Kami membangun dengan pondasi yang scalable (bisa tumbuh).</p>
+            </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="section text-center" style="padding: 50px 0;">
+      <div class="container">
+        <h2>Siap Membangun Rumah Digital Bisnis Anda?</h2>
+        <p>Mari mulai dari diskusi yang jujur dan terarah.</p>
+        <br>
+        <a href="https://wa.me/628121515633?text=Halo,%20saya%20siap%20membangun%20website" class="btn btn-cta" style="font-size: 1.2rem;">Hubungi Kami Sekarang</a>
+      </div>
+    </section>
+
+   <div class="ulasan-box" style="max-width: 500px; margin: 20px auto; text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+  <h3>🌟 Beri Rating Pelayanan Kami</h3>
+  
+  <div id="starContainer" style="font-size: 30px; cursor: pointer; color: #ccc; margin-bottom: 10px;">
+    <span onclick="pilihBintang(1)" id="star1">★</span>
+    <span onclick="pilihBintang(2)" id="star2">★</span>
+    <span onclick="pilihBintang(3)" id="star3">★</span>
+    <span onclick="pilihBintang(4)" id="star4">★</span>
+    <span onclick="pilihBintang(5)" id="star5">★</span>
   </div>
 
-  <script>
-    // --- KONFIGURASI SUPABASE ---
-    const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0';
-    
-    // Inisialisasi
-    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  <textarea id="isiUlasan" placeholder="Tulis pengalaman Anda menggunakan jasa kami..." 
+            style="width: 100%; height: 80px; padding: 10px; border-radius: 8px; border: 1px solid #ddd; font-family: inherit;"></textarea>
 
-    // Ambil Elemen HTML
-    const loginBox = document.getElementById('loginBox');
-    const dashboard = document.getElementById('dashboard');
-    const msg = document.getElementById('loginMsg');
-    const tableBody = document.querySelector('#visitorTable tbody');
+  <button onclick="kirimUlasan()" id="btnKirimUlasan" 
+          style="background: #f59e0b; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer; font-weight: bold; width: 100%;">
+    Kirim Ulasan
+  </button>
 
-    // 1. CEK SESSION
-    sb.auth.getSession().then(({ data }) => {
-      if (data.session) showDashboard();
-    });
+  <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+     👁 Pengunjung hari ini: <span id="visitorCount" style="font-weight:bold; color: #007bff;">Loading...</span>
+  </p>
+</div>
 
-    // 2. LOGIN
-    document.getElementById('loginBtn').addEventListener('click', async () => {
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
+    <div style="max-width: 500px; margin: 30px auto;">
+  <h4 style="text-align:center; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+    💬 Kata Mereka Yang Sudah Pakai
+  </h4>
+  
+  <div id="wadahUlasan">
+    <p style="text-align:center; color:#888;">Sedang memuat ulasan...</p>
+  </div>
+</div>
 
-      if(!email || !password) {
-        msg.textContent = '⚠️ Email dan Password harus diisi!';
-        msg.style.color = 'orange';
-        return;
-      }
 
-      msg.textContent = '⏳ Sedang memproses...';
-      msg.style.color = 'yellow';
 
-      const { error } = await sb.auth.signInWithPassword({ email, password });
+</main> 
 
-      if (error) {
-        msg.textContent = '❌ Gagal: ' + error.message;
-        msg.style.color = '#ef4444';
-        return;
-      }
-      showDashboard();
-    });
+<footer id="site-footer">
+  <div class="container">
+      <div class="footer-grid">
+          <div class="footer-col">
+              <h3>OemahDesainWeb</h3>
+              <p>Jasa pembuatan website profesional yang membantu UMKM dan Pebisnis Indonesia Go Digital.</p>
+          </div>
+          <div class="footer-col">
+              <h3>Hubungi Kami</h3>
+              <p><i class="fas fa-whatsapp"></i> 0812-1515-633</p>
+              <p><i class="fas fa-map-marker-alt"></i> Jawa Tengah, Indonesia</p>
+          </div>
+          <div class="footer-col">
+              <h3>Ikuti Kami</h3>
+              <div class="social-icons">
+                  <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                  <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="legal-section text-center" style="margin-top: 20px; border-top: 1px solid #444; padding-top: 20px;">
+          <p>&copy; 2026 OemahDesainWeb. All Rights Reserved.</p>
+      </div>
+  </div>
+</footer>
 
-    // 3. LOGOUT
-    document.getElementById('logoutBtn').addEventListener('click', async () => {
-      await sb.auth.signOut();
-      location.reload();
-    });
+<a href="https://wa.me/628121515633?text=Halo%20Admin,%20saya%20mau%20tanya%20jasa%20pembuatan%20website" 
+   class="floating-wa" 
+   target="_blank" 
+   style="
+      position: fixed !important; 
+      bottom: 20px !important; 
+      left: 20px !important; 
+      width: auto !important;
+      max-width: fit-content !important; 
+      display: inline-flex !important; 
+      align-items: center; 
+      gap: 8px;
+      background-color: #25d366; 
+      color: white; 
+      padding: 10px 20px; 
+      border-radius: 50px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+      z-index: 99999;
+   ">
+  <i class="fab fa-whatsapp" style="font-size: 20px;"></i> 
+  <span>Chat Kami</span>
+</a>
 
-    // 4. UI HANDLER
-    function showDashboard() {
-      loginBox.classList.add('hidden');
-      dashboard.classList.remove('hidden');
-      loadVisitors();
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // --- KONFIGURASI DB ---
+  const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co'; 
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0';
+  
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // ============================
+  // BAGIAN 1: KIRIM ULASAN
+  // ============================
+  let bintangSkrg = 0;
+
+  function pilihBintang(n) {
+    bintangSkrg = n;
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById('star' + i).style.color = '#ccc';
+    }
+    for (let i = 1; i <= n; i++) {
+      document.getElementById('star' + i).style.color = '#f59e0b';
+    }
+  }
+
+  async function kirimUlasan() {
+    const isiPesan = document.getElementById('isiUlasan').value;
+    const btn = document.getElementById('btnKirimUlasan');
+
+    if (bintangSkrg === 0) { alert("⚠️ Pilih bintang dulu!"); return; }
+    if (!isiPesan) { alert("⚠️ Tulis ulasan dulu!"); return; }
+
+    btn.innerText = "Mengirim..."; btn.disabled = true;
+
+    try {
+      const { error } = await db.from('reviews').insert([{ rating: bintangSkrg, comment: isiPesan }]);
+      if (error) throw error;
+
+      alert("✅ Ulasan terkirim! Terima kasih.");
+      document.getElementById('isiUlasan').value = "";
+      pilihBintang(0); bintangSkrg = 0;
+      
+      // Refresh daftar ulasan
+      tampilkanUlasan(); 
+
+    } catch (err) {
+      console.error("Gagal Review:", err);
+      alert("❌ Gagal kirim. Cek koneksi.");
+    } finally {
+      btn.innerText = "Kirim Ulasan"; btn.disabled = false;
+    }
+  }
+
+  // ============================
+  // BAGIAN 2: TAMPILKAN ULASAN (INI YANG BIKIN MUNCUL)
+  // ============================
+  async function tampilkanUlasan() {
+    const wadah = document.getElementById('wadahUlasan');
+    if(!wadah) return;
+
+    // Ambil data
+    const { data, error } = await db
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    if (error) { console.error("Error ambil ulasan:", error); return; }
+
+    if (!data || data.length === 0) {
+      wadah.innerHTML = "<p style='text-align:center; color:#ccc;'>Belum ada ulasan.</p>";
+      return;
     }
 
-    // 5. LOAD DATA TABEL
-    async function loadVisitors() {
-      tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center;">🔄 Mengambil data terbaru...</td></tr>';
-
-      const { data, error } = await sb
-        .from('visitors')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(50);
-
-      if (error) {
-        alert('Gagal ambil data: ' + error.message);
-        return;
+    // Render ke HTML
+    wadah.innerHTML = ""; 
+    data.forEach(ulasan => {
+      let bintangHTML = "";
+      for(let i=0; i<5; i++) {
+        bintangHTML += (i < ulasan.rating) ? "★" : "<span style='color:#ccc'>★</span>";
       }
+      const card = `
+        <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #f0f0f0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+           <div style="color: #f59e0b; font-size: 18px;">${bintangHTML}</div>
+           <p style="margin: 5px 0; color: #555; font-style: italic;">"${ulasan.comment}"</p>
+        </div>`;
+      wadah.innerHTML += card;
+    });
+  }
 
-      tableBody.innerHTML = ''; 
+  // ============================
+  // BAGIAN 3: TRAFFIC
+  // ============================
+  async function hitungTraffic() {
+     try {
+       // Simpan & Hitung
+       const resp = await fetch('https://api.ipify.org?format=json');
+       const dataIP = await resp.json();
+       await db.from('visitors').insert([{ ip_address: dataIP.ip, device_info: navigator.userAgent }]);
+       
+       const hariIni = new Date().toISOString().split('T')[0];
+       const { count } = await db.from('visitors').select('*', { count: 'exact', head: true }).gte('created_at', hariIni);
 
-      if (data.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Belum ada visitor masuk.</td></tr>';
-        return;
-      }
+       const elAngka = document.getElementById('visitorCount');
+       if(elAngka) elAngka.innerText = count + " Orang";
+     } catch (err) { console.error("Traffic Error:", err); }
+  }
 
-      data.forEach(visitor => {
-        const waktu = new Date(visitor.created_at).toLocaleString('id-ID');
-        let device = visitor.device_info || '-';
-        
-        if(device.includes('Android')) device = '📱 Android';
-        else if(device.includes('iPhone')) device = '📱 iPhone';
-        else if(device.includes('Windows')) device = '💻 Windows';
-        else if(device.includes('Macintosh')) device = '💻 Mac';
-        else device = '🌐 ' + device.substring(0, 15) + '...';
-
-        const row = `
-          <tr>
-            <td style="font-size:12px;">${waktu}</td>
-            <td style="font-weight:bold; color:#4ade80;">${visitor.ip_address}</td>
-            <td style="font-size:12px; color:#9ca3af;">${device}</td>
-          </tr>
-        `;
-        tableBody.innerHTML += row;
-      });
-    }
-
-    window.loadVisitors = loadVisitors;
-  </script>
-
+  // JALANKAN SEMUA
+  document.addEventListener("DOMContentLoaded", function() {
+    hitungTraffic(); 
+    tampilkanUlasan(); // <--- Ini perintah kuncinya!
+  });
+</script>
 </body>
 </html>
