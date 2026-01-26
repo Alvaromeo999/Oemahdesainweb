@@ -8,20 +8,25 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 20px; }
-    .box { background: #111827; padding: 24px; border-radius: 10px; max-width: 800px; margin: 0 auto; } /* Lebar diperbesar untuk tabel */
+    /* CSS LANGSUNG DISINI BIAR TIDAK PERLU FILE TERPISAH */
+    body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 20px; display: flex; justify-content: center; }
+    .box { background: #111827; padding: 24px; border-radius: 10px; width: 100%; max-width: 800px; }
     
-    input, button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
-    button { background: #22c55e; color: white; font-weight: bold; cursor: pointer; }
+    h2 { margin-top: 0; color: #60a5fa; }
+    input, button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; box-sizing: border-box; }
+    button { background: #22c55e; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+    button:hover { opacity: 0.9; }
     .logout { background: #ef4444; margin-top: 20px; }
     .hidden { display: none; }
     
-    /* STYLE TABEL DATA */
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #ddd; }
-    th, td { padding: 10px; border-bottom: 1px solid #374151; text-align: left; font-size: 14px; }
-    th { background-color: #1f2937; }
+    /* TABEL */
+    .table-container { overflow-x: auto; margin-top: 20px; border: 1px solid #374151; border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; color: #ddd; }
+    th, td { padding: 12px; border-bottom: 1px solid #374151; text-align: left; font-size: 14px; }
+    th { background-color: #1f2937; color: #9ca3af; text-transform: uppercase; font-size: 12px; }
     tr:hover { background-color: #1f2937; }
-    .refresh-btn { background: #3b82f6; width: auto; display: inline-block; padding: 8px 16px; font-size: 14px; margin-bottom: 10px;}
+    
+    .refresh-btn { background: #3b82f6; width: auto; display: inline-block; padding: 8px 16px; font-size: 14px; margin-bottom: 10px; float: right;}
   </style>
 </head>
 
@@ -29,22 +34,22 @@
 
   <div class="box">
     <div id="loginBox">
-      <h2>🔐 Admin Login</h2>
+      <h2 style="text-align:center;">🔐 Admin Login</h2>
       <input type="email" id="email" placeholder="Email admin">
       <input type="password" id="password" placeholder="Password">
-      <button id="loginBtn">Login</button>
-      <p id="loginMsg"></p>
+      <button id="loginBtn">Masuk Dashboard</button>
+      <p id="loginMsg" style="text-align:center; margin-top:10px; font-size:14px;"></p>
     </div>
 
     <div id="dashboard" class="hidden">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h2>📊 Data Visitor Real-time</h2>
+      <div style="overflow: hidden; margin-bottom: 15px;">
+        <h2 style="float: left; margin: 0;">📊 Data Visitor</h2>
         <button class="refresh-btn" onclick="loadVisitors()">🔄 Refresh Data</button>
       </div>
       
-      <p>Memantau trafik IP & Perangkat dari Iklan.</p>
+      <p style="color: #9ca3af; font-size: 14px;">Memantau trafik real-time dari Iklan & Website.</p>
 
-      <div style="overflow-x:auto;">
+      <div class="table-container">
         <table id="visitorTable">
           <thead>
             <tr>
@@ -54,7 +59,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td colspan="3">Sedang memuat data...</td></tr>
+            <tr><td colspan="3" style="text-align:center;">Klik Refresh untuk memuat data...</td></tr>
           </tbody>
         </table>
       </div>
@@ -63,7 +68,113 @@
     </div>
   </div>
 
-  <script src="admin.js"></script>
+  <script>
+    // --- KONFIGURASI SUPABASE ---
+    const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0';
+    
+    // Inisialisasi
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Ambil Elemen HTML
+    const loginBox = document.getElementById('loginBox');
+    const dashboard = document.getElementById('dashboard');
+    const msg = document.getElementById('loginMsg');
+    const tableBody = document.querySelector('#visitorTable tbody');
+
+    // 1. CEK APAKAH SUDAH LOGIN?
+    sb.auth.getSession().then(({ data }) => {
+      if (data.session) {
+        showDashboard();
+      }
+    });
+
+    // 2. TOMBOL LOGIN DITEKAN
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if(!email || !password) {
+        msg.textContent = '⚠️ Email dan Password harus diisi!';
+        msg.style.color = 'orange';
+        return;
+      }
+
+      msg.textContent = '⏳ Sedang memproses...';
+      msg.style.color = 'yellow';
+
+      const { error } = await sb.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        msg.textContent = '❌ Gagal: ' + error.message;
+        msg.style.color = '#ef4444';
+        return;
+      }
+
+      showDashboard();
+    });
+
+    // 3. TOMBOL LOGOUT
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await sb.auth.signOut();
+      location.reload();
+    });
+
+    // 4. TAMPILKAN DASHBOARD
+    function showDashboard() {
+      loginBox.classList.add('hidden');
+      dashboard.classList.remove('hidden');
+      loadVisitors(); // Otomatis ambil data
+    }
+
+    // 5. FUNGSI AMBIL DATA VISITOR
+    async function loadVisitors() {
+      tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center;">🔄 Mengambil data terbaru...</td></tr>';
+
+      const { data, error } = await sb
+        .from('visitors')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(50);
+
+      if (error) {
+        alert('Gagal ambil data: ' + error.message);
+        return;
+      }
+
+      tableBody.innerHTML = ''; // Bersihkan tabel
+
+      if (data.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Belum ada visitor masuk.</td></tr>';
+        return;
+      }
+
+      // Loop data
+      data.forEach(visitor => {
+        const waktu = new Date(visitor.created_at).toLocaleString('id-ID');
+        
+        let device = visitor.device_info || '-';
+        // Singkatkan info device
+        if(device.includes('Android')) device = '📱 Android';
+        else if(device.includes('iPhone')) device = '📱 iPhone';
+        else if(device.includes('Windows')) device = '💻 Windows';
+        else if(device.includes('Macintosh')) device = '💻 Mac';
+        else device = '🌐 ' + device.substring(0, 15) + '...';
+
+        const row = `
+          <tr>
+            <td style="font-size:12px;">${waktu}</td>
+            <td style="font-weight:bold; color:#4ade80;">${visitor.ip_address}</td>
+            <td style="font-size:12px; color:#9ca3af;">${device}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    // Biar fungsi bisa dipanggil oleh tombol HTML
+    window.loadVisitors = loadVisitors;
+  </script>
 
 </body>
 </html>
