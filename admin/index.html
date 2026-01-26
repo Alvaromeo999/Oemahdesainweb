@@ -5,94 +5,29 @@
   <title>Admin Panel - OemahDesainWeb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- =========================
-       GOOGLE ANALYTICS GA4
-  ========================= -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-72SQQ9Q9YT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-72SQQ9Q9YT', { send_page_view: true });
-  </script>
-
-  <!-- =========================
-       META PIXEL
-       (GANTI PIXEL ID ASLI)
-  ========================= -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-
-  fbq('init', '120239364634940576'); /* <-- GANTI */
-  fbq('track', 'PageView');
-  </script>
-
-  <!-- =========================
-       SUPABASE (LOAD SEKALI)
-  ========================= -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- =========================
-       STYLE
-  ========================= -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .box {
-      background: #111827;
-      padding: 24px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 360px;
-    }
-    input, button, a.btn-wa {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: none;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-    }
-    button {
-      background: #22c55e;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .logout {
-      background: #ef4444;
-    }
-    .btn-wa {
-      background: #25D366;
-      color: #000;
-      font-weight: bold;
-    }
-    .hidden {
-      display: none;
-    }
+    body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 20px; }
+    .box { background: #111827; padding: 24px; border-radius: 10px; max-width: 800px; margin: 0 auto; } /* Lebar diperbesar untuk tabel */
+    
+    input, button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
+    button { background: #22c55e; color: white; font-weight: bold; cursor: pointer; }
+    .logout { background: #ef4444; margin-top: 20px; }
+    .hidden { display: none; }
+    
+    /* STYLE TABEL DATA */
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #ddd; }
+    th, td { padding: 10px; border-bottom: 1px solid #374151; text-align: left; font-size: 14px; }
+    th { background-color: #1f2937; }
+    tr:hover { background-color: #1f2937; }
+    .refresh-btn { background: #3b82f6; width: auto; display: inline-block; padding: 8px 16px; font-size: 14px; margin-bottom: 10px;}
   </style>
 </head>
 
 <body>
 
   <div class="box">
-    <!-- LOGIN -->
     <div id="loginBox">
       <h2>🔐 Admin Login</h2>
       <input type="email" id="email" placeholder="Email admin">
@@ -101,66 +36,34 @@
       <p id="loginMsg"></p>
     </div>
 
-    <!-- DASHBOARD -->
     <div id="dashboard" class="hidden">
-      <h2>✅ Admin Aktif</h2>
-      <p>Kamu sudah login sebagai admin.</p>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2>📊 Data Visitor Real-time</h2>
+        <button class="refresh-btn" onclick="loadVisitors()">🔄 Refresh Data</button>
+      </div>
+      
+      <p>Memantau trafik IP & Perangkat dari Iklan.</p>
 
-      <!-- OPTIONAL: WA BUTTON (tracking aktif) -->
-      <a href="#"
-         class="btn-wa"
-         data-wa="Halo Oemah Desain Web, saya tertarik jasa pembuatan website"
-         data-source="admin_panel">
-         💬 WhatsApp OemahDesainWeb
-      </a>
+      <div style="overflow-x:auto;">
+        <table id="visitorTable">
+          <thead>
+            <tr>
+              <th>Waktu</th>
+              <th>IP Address</th>
+              <th>Perangkat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="3">Sedang memuat data...</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-      <button class="logout" id="logoutBtn">Logout</button>
+      <button class="logout" id="logoutBtn">Logout Admin</button>
     </div>
   </div>
 
-  <!-- =========================
-       ADMIN SCRIPT
-  ========================= -->
   <script src="admin.js"></script>
-
-  <!-- =========================
-       WHATSAPP TRACKING (GA4 + META)
-  ========================= -->
-  <script>
-  (function initWATracking() {
-    const buttons = document.querySelectorAll('[data-wa]');
-    if (!buttons.length) return;
-
-    const WA_NUMBER = '628121515633';
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-
-        const message = btn.dataset.wa || '';
-        const source = btn.dataset.source || 'unknown';
-
-        /* GA4 EVENT */
-        if (typeof gtag === 'function') {
-          gtag('event', 'click_whatsapp', {
-            event_category: 'engagement',
-            event_label: source
-          });
-        }
-
-        /* META EVENT */
-        if (typeof fbq === 'function') {
-          fbq('trackCustom', 'ClickWhatsApp', {
-            source: source
-          });
-        }
-
-        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-      });
-    });
-  })();
-  </script>
 
 </body>
 </html>
