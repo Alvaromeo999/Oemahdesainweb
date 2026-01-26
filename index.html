@@ -345,5 +345,57 @@
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"7277897308cc40819f30298cfc132106","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async function() {
+    
+    // --- BAGIAN 1: KUNCI RAHASIA (WAJIB DIGANTI) ---
+    // Cek di Supabase Dashboard: Settings (Roda Gigi) > API
+    const SUPABASE_URL = 'https://tosjjicxibibuxpskpjz.supabase.co'; 
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvc2pqaWN4aWJpYnV4cHNrcGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODAxMTAsImV4cCI6MjA4NDc1NjExMH0.-wAYdccN8Ji6tVWhXYQrhJunDeyA7cpzskkmpY3MLT0'; 
+
+    // Inisialisasi
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // --- BAGIAN 2: LOGIKA PENCATATAN ---
+    async function simpanDataVisitor() {
+      try {
+        console.log("🔄 Sedang mengambil IP...");
+
+        // A. Curi IP Address pakai layanan pihak ketiga (Gratis)
+        const response = await fetch('https://api.ipify.org?format=json');
+        const dataIP = await response.json();
+        const ipUser = dataIP.ip;
+
+        // B. Ambil Info HP/Laptop
+        const deviceUser = navigator.userAgent;
+
+        // C. Masukkan ke Tabel 'visitors'
+        const { error } = await supabase
+          .from('visitors')
+          .insert([
+            { 
+              ip_address: ipUser, 
+              device_info: deviceUser 
+            }
+          ]);
+
+        if (error) {
+          console.error("❌ Gagal Simpan ke Supabase:", error.message);
+        } else {
+          console.log("✅ SUKSES! IP " + ipUser + " sudah masuk database.");
+        }
+
+      } catch (err) {
+        console.error("❌ Error Koneksi:", err);
+      }
+    }
+
+    // Jalankan perintah
+    simpanDataVisitor();
+  });
+</script>
+
 </body>
 </html>
